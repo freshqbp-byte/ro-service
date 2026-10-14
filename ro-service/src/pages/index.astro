@@ -1,42 +1,19 @@
 ---
-// Full Code with Performance Optimizations
+// Full Code with Correct Conversion Label
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
 
-// FAQ Data
 const faqs = [
-  {
-    q: "What services does your water purifier service center provide?",
-    a: "Our water purifier service center provides complete RO repair, new installation, annual maintenance (AMC), filter and membrane replacement, deep cleaning, and commercial RO service for offices, hotels, and restaurants."
-  },
-  {
-    q: "How do I find a water purifier service center near me?",
-    a: "Simply fill out the service request form on this page or call us at +91 90083 15606. Our customer support team will assign a certified technician near your location within 60 minutes."
-  },
-  {
-    q: "What is the RO service center number to book a technician?",
-    a: "You can call our RO service center number +91 90083 15606 to book a technician. We are available 24x7 for doorstep service."
-  },
-  {
-    q: "Do you provide doorstep service?",
-    a: "Yes, we provide 100% doorstep service. Our certified technicians arrive at your home, diagnose the issue, and complete the repair or installation on the spot with genuine spare parts."
-  },
-  {
-    q: "How much does RO repair cost?",
-    a: "Our standard service visit starts at just ₹299. This includes a full checkup and basic cleaning. Any spare parts or replacements are charged separately after informing you in advance."
-  },
-  {
-    q: "Do you offer a warranty on repairs?",
-    a: "Yes, every repair we perform comes with a 30-day service warranty. If the same issue reoccurs within this period, we will fix it free of charge."
-  },
-  {
-    q: "Which areas do you serve?",
-    a: "We serve all major areas across Bangalore and nearby localities. To confirm service availability in your specific area, please call us at +91 90083 15606 or submit the form above."
-  }
+  { q: "What services does your water purifier service center provide?", a: "Our water purifier service center provides complete RO repair, new installation, annual maintenance (AMC), filter and membrane replacement, deep cleaning, and commercial RO service for offices, hotels, and restaurants." },
+  { q: "How do I find a water purifier service center near me?", a: "Simply fill out the service request form on this page or call us at +91 90083 15606. Our customer support team will assign a certified technician near your location within 60 minutes." },
+  { q: "What is the RO service center number to book a technician?", a: "You can call our RO service center number +91 90083 15606 to book a technician. We are available 24x7 for doorstep service." },
+  { q: "Do you provide doorstep service?", a: "Yes, we provide 100% doorstep service. Our certified technicians arrive at your home, diagnose the issue, and complete the repair or installation on the spot with genuine spare parts." },
+  { q: "How much does RO repair cost?", a: "Our standard service visit starts at just ₹299. This includes a full checkup and basic cleaning. Any spare parts or replacements are charged separately after informing you in advance." },
+  { q: "Do you offer a warranty on repairs?", a: "Yes, every repair we perform comes with a 30-day service warranty. If the same issue reoccurs within this period, we will fix it free of charge." },
+  { q: "Which areas do you serve?", a: "We serve all major areas across Bangalore and nearby localities. To confirm service availability in your specific area, please call us at +91 90083 15606 or submit the form above." }
 ];
 
-// FAQ Schema
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -47,7 +24,6 @@ const faqSchema = {
   }))
 };
 
-// LocalBusiness Schema
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -64,33 +40,16 @@ const localBusinessSchema = {
     "addressRegion": "Karnataka",
     "addressCountry": "IN"
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "12.9716",
-    "longitude": "77.5946"
-  },
+  "geo": { "@type": "GeoCoordinates", "latitude": "12.9716", "longitude": "77.5946" },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     "opens": "00:00",
     "closes": "23:59"
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "Bangalore"
-  },
-  "serviceType": [
-    "RO Repair",
-    "Water Purifier Installation",
-    "RO AMC",
-    "Filter Replacement",
-    "Deep Cleaning"
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "50000"
-  }
+  "areaServed": { "@type": "City", "name": "Bangalore" },
+  "serviceType": ["RO Repair", "Water Purifier Installation", "RO AMC", "Filter Replacement", "Deep Cleaning"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "50000" }
 };
 ---
 
@@ -98,6 +57,29 @@ const localBusinessSchema = {
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+
+    <!-- TrafficGuard Start -->
+    <script>
+    window.dataTrafficGuard = window.dataTrafficGuard || [];
+    window.dataTrafficGuard.push(['property', 'tg-019640-001']);
+    window.dataTrafficGuard.push(['event', 'pageview']);
+    (function() {
+    var tg = document.createElement('script'); tg.type = 'text/javascript'; tg.async = true;tg.src = 'https://tgt.p.tgtag.io/event?property_id=tg-019640-001&event_name=pageview&no_script=1';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tg, s);
+    })();
+    </script>
+    <noscript><img src="https://p.tgtag.io/event?property_id=tg-019640-001&event_name=pageview&no_script=1" width="1" height="1" style="display:none" /></noscript>
+    <!-- TrafficGuard End -->
+
+    <!-- Google Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16577170929"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-16577170929');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RO Service Center Bangalore | Water Purifier Service Center Near Me</title>
     <meta name="description" content="Trusted water purifier service center in Bangalore offering fast RO repair, installation & AMC at your doorstep. Call our RO service center number +91 90083 15606. Available 24x7." />
@@ -130,7 +112,6 @@ const localBusinessSchema = {
         .container { width: 100%; max-width: 100%; margin: 0 auto; }
         @media (min-width: 768px) { .container { max-width: 720px; } }
 
-        /* 0. Top Scrolling Bar */
         .top-bar {
             background: #0A2B4E; color: #ffffff;
             padding: 6px 0; font-size: 0.75rem; font-weight: 500;
@@ -143,7 +124,6 @@ const localBusinessSchema = {
             100% { transform: translateX(-100%); }
         }
 
-        /* 1. Header */
         header { background: #0A2B4E; padding: 10px 0; position: sticky; top: 0; z-index: 100; }
         .header-inner { 
             display: flex; justify-content: space-between; 
@@ -174,7 +154,6 @@ const localBusinessSchema = {
             border-radius: 50%; font-weight: 800;
         }
 
-        /* Dropdown Menu */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -206,7 +185,6 @@ const localBusinessSchema = {
             color: #f97316;
         }
 
-        /* 2. Hero Section - Light Blue Overlay */
         .hero {
             position: relative;
             background: linear-gradient(to right, rgba(10, 43, 78, 0.55), rgba(10, 43, 78, 0.15)), 
@@ -233,7 +211,6 @@ const localBusinessSchema = {
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
-        /* 3. Intro Text Section */
         .intro-section { padding: 40px 24px; background: #fff; }
         .intro-inner { max-width: 720px; margin: 0 auto; }
         .intro-section h2 {
@@ -245,7 +222,6 @@ const localBusinessSchema = {
             line-height: 1.6; text-align: justify; 
         }
 
-        /* 4. Form Section */
         .form-section { padding: 0 16px 40px; background: #f4f7fb; }
         .form-box {
             background: #fff; border-radius: 16px;
@@ -282,7 +258,6 @@ const localBusinessSchema = {
         }
         .submit-btn:hover { background: #ea580c; }
 
-        /* 5. Services Section */
         .services-section { background: #fff; padding: 48px 24px; border-top: 1px solid #e5e7eb; }
         .services-inner { max-width: 720px; margin: 0 auto; }
         .services-heading {
@@ -303,7 +278,6 @@ const localBusinessSchema = {
             line-height: 1.7; text-align: justify; margin-bottom: 4px;
         }
 
-        /* 6. Why Choose Us Section */
         .why-section { background: #f4f7fb; padding: 48px 24px; border-top: 1px solid #e5e7eb; }
         .why-inner { max-width: 720px; margin: 0 auto; }
         .why-heading {
@@ -324,7 +298,6 @@ const localBusinessSchema = {
             line-height: 1.7; text-align: justify; margin-bottom: 4px;
         }
 
-        /* 7. FAQ Section */
         .faq-section { background: #fff; padding: 48px 24px; border-top: 1px solid #e5e7eb; }
         .faq-inner { max-width: 720px; margin: 0 auto; }
         .faq-heading {
@@ -389,7 +362,6 @@ const localBusinessSchema = {
             .faq-question { font-size: 1rem; }
         }
 
-        /* 8. Right Side Floating Ribbon */
         .side-ribbon {
             position: fixed; right: 0; top: 50%;
             transform: translateY(-50%);
@@ -403,7 +375,6 @@ const localBusinessSchema = {
             z-index: 200; box-shadow: -2px 2px 10px rgba(0,0,0,0.15);
         }
 
-        /* 9. Floating Call Button */
         .call-float {
             position: fixed; bottom: 24px; left: 24px;
             background: #f97316; 
@@ -424,7 +395,6 @@ const localBusinessSchema = {
             100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
         }
 
-        /* 10. Footer */
         footer { 
             background: #0A2B4E; 
             color: #94a3b8;
@@ -484,7 +454,6 @@ const localBusinessSchema = {
             margin-top: 4px;
         }
 
-        /* Footer Disclaimer */
         .footer-disclaimer {
             background: rgba(249, 115, 22, 0.08);
             border-left: 3px solid #f97316;
@@ -501,7 +470,6 @@ const localBusinessSchema = {
             font-weight: 800;
         }
 
-        /* Footer Bottom */
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 16px;
@@ -511,7 +479,6 @@ const localBusinessSchema = {
             margin-bottom: 12px;
         }
 
-        /* Legal Links at Very Bottom */
         .footer-legal-links {
             text-align: center;
             padding-top: 12px;
@@ -535,14 +502,12 @@ const localBusinessSchema = {
 </head>
 <body>
 
-    <!-- Top Scrolling Bar -->
     <div class="top-bar">
         <div class="marquee">
             <span>24x7 Customer Service Support in Bangalore. Get a certified technician at your doorstep within 60 minutes. Book your repair or maintenance service today!</span>
         </div>
     </div>
 
-    <!-- Header -->
     <header>
         <div class="header-inner">
             <div class="header-left">
@@ -558,7 +523,6 @@ const localBusinessSchema = {
                 </span>
             </div>
 
-            <!-- Dropdown Menu -->
             <div class="dropdown-menu" id="dropdownMenu">
                 <a href="/">🏠 Home</a>
                 <a href="/about">ℹ️ About Us</a>
@@ -571,7 +535,6 @@ const localBusinessSchema = {
         </div>
     </header>
 
-    <!-- Hero Section -->
     <div class="hero">
         <div class="hero-inner">
             <h1>RO Service Request</h1>
@@ -579,7 +542,6 @@ const localBusinessSchema = {
         </div>
     </div>
 
-    <!-- Intro Text -->
     <div class="intro-section">
         <div class="intro-inner">
             <h2>Doorstep RO Service & Support</h2>
@@ -587,11 +549,10 @@ const localBusinessSchema = {
         </div>
     </div>
 
-    <!-- Form Section -->
     <div class="form-section" id="serviceForm">
         <div class="form-box">
             <h3>Register Service Request</h3>
-            <form action="https://formsubmit.co/syedsmaula786@gmail.com" method="POST">
+            <form action="https://formsubmit.co/syedsmaula786@gmail.com" method="POST" id="serviceFormElement">
                 
                 <input type="hidden" name="_subject" value="New RO Service Request" />
                 <input type="hidden" name="_captcha" value="false" />
@@ -626,7 +587,6 @@ const localBusinessSchema = {
         </div>
     </div>
 
-    <!-- Services Section -->
     <section class="services-section" id="services">
         <div class="services-inner">
             <h2 class="services-heading">Our Water Purifier Service Center Services</h2>
@@ -667,7 +627,6 @@ const localBusinessSchema = {
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
     <section class="why-section" id="why">
         <div class="why-inner">
             <h2 class="why-heading">Why Choose Our Water Purifier Service Center?</h2>
@@ -707,7 +666,6 @@ const localBusinessSchema = {
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section class="faq-section" id="faq">
         <div class="faq-inner">
             <h2 class="faq-heading">Frequently Asked Questions</h2>
@@ -724,13 +682,10 @@ const localBusinessSchema = {
         </div>
     </section>
 
-    <!-- Side Ribbon -->
     <a href={PHONE_LINK} class="side-ribbon">BOOK A SERVICE</a>
 
-    <!-- Floating Call Button -->
     <a href={PHONE_LINK} class="call-float" aria-label="Call Now">📞</a>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-inner">
             <div class="footer-grid">
@@ -832,6 +787,31 @@ const localBusinessSchema = {
                 if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
                     dropdown.classList.remove('show');
                 }
+            });
+
+            // ===== GOOGLE ADS CONVERSION TRACKING =====
+
+            // Form Submit Conversion
+            const form = document.getElementById('serviceFormElement');
+            if (form) {
+                form.addEventListener('submit', function() {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9'
+                        });
+                    }
+                });
+            }
+
+            // Call Click Conversion
+            document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9'
+                        });
+                    }
+                });
             });
         });
     </script>
