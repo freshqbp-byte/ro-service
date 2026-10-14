@@ -1,5 +1,5 @@
 ---
-// Full Code with Updated TrafficGuard
+// Full Code - Performance Optimized
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
@@ -58,20 +58,7 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
-    <!-- TrafficGuard Start -->
-    <script>
-    window.dataTrafficGuard = window.dataTrafficGuard || [];
-    window.dataTrafficGuard.push(['property', 'tg-019640-001']);
-    window.dataTrafficGuard.push(['event','pageview']);
-    (function() {
-    var tg = document.createElement('script'); tg.type = 'text/javascript'; tg.async = true;tg.src = 'https://tgtag.io/tg.js?pid=tg-019640-001';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tg, s);
-    })();
-    </script>
-    <noscript><img src="https://p.tgtag.io/event?property_id=tg-019640-001&event_name=pageview&no_script=1" width="1" height="1" border="0"/></noscript>
-    <!-- TrafficGuard End-->
-
-    <!-- Google Tag (gtag.js) -->
+    <!-- Google Tag (gtag.js) - MUST be in head for conversion tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16577170929"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -88,6 +75,12 @@ const localBusinessSchema = {
     <link rel="canonical" href="https://roservicesupport.co.in/" />
     
     <meta name="theme-color" content="#0A2B4E" />
+    
+    <!-- Preconnect for faster external script loading -->
+    <link rel="preconnect" href="https://tgtag.io" crossorigin>
+    <link rel="preconnect" href="https://p.tgtag.io" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
     <link rel="preload" as="image" href="/ro-banner.jpg" fetchpriority="high" />
 
     <meta name="geo.region" content="IN-KA" />
@@ -791,7 +784,6 @@ const localBusinessSchema = {
 
             // ===== GOOGLE ADS CONVERSION TRACKING =====
 
-            // Form Submit Conversion
             const form = document.getElementById('serviceFormElement');
             if (form) {
                 form.addEventListener('submit', function() {
@@ -803,7 +795,6 @@ const localBusinessSchema = {
                 });
             }
 
-            // Call Click Conversion
             document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
                 link.addEventListener('click', function() {
                     if (typeof gtag === 'function') {
@@ -815,6 +806,18 @@ const localBusinessSchema = {
             });
         });
     </script>
+
+    <!-- TrafficGuard - Loaded at end of body for better performance -->
+    <script>
+    window.dataTrafficGuard = window.dataTrafficGuard || [];
+    window.dataTrafficGuard.push(['property', 'tg-019640-001']);
+    window.dataTrafficGuard.push(['event','pageview']);
+    (function() {
+    var tg = document.createElement('script'); tg.type = 'text/javascript'; tg.async = true;tg.src = 'https://tgtag.io/tg.js?pid=tg-019640-001';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tg, s);
+    })();
+    </script>
+    <noscript><img src="https://p.tgtag.io/event?property_id=tg-019640-001&event_name=pageview&no_script=1" width="1" height="1" border="0"/></noscript>
 
 </body>
 </html>
