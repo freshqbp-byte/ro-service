@@ -1,5 +1,5 @@
 ---
-// Full Code - Performance Optimized v3
+// Full Code - Performance Optimized Final
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
@@ -58,21 +58,12 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
-    <!-- Google Tag - Configured for lazy load -->
+    <!-- Google Tag setup (script loads later) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-16577170929');
-      
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          var s = document.createElement('script');
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
-          s.async = true;
-          document.head.appendChild(s);
-        }, 100);
-      });
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -84,12 +75,12 @@ const localBusinessSchema = {
     
     <meta name="theme-color" content="#0A2B4E" />
     
-    <!-- Preconnect for faster external script loading -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://tgtag.io" crossorigin>
     <link rel="preconnect" href="https://p.tgtag.io" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     
-    <!-- Preload hero image for faster LCP -->
+    <!-- Preload hero image -->
     <link rel="preload" as="image" href="/ro-banner.webp" type="image/webp" fetchpriority="high" />
 
     <meta name="geo.region" content="IN-KA" />
@@ -187,7 +178,6 @@ const localBusinessSchema = {
             color: #f97316;
         }
 
-        /* Hero with img tag for fast LCP */
         .hero {
             position: relative;
             padding: 50px 20px; 
@@ -559,7 +549,6 @@ const localBusinessSchema = {
         </div>
     </header>
 
-    <!-- Hero Section with img tag for fast LCP -->
     <div class="hero">
         <img src="/ro-banner.webp" alt="RO Service Center Bangalore - Water Purifier Repair" class="hero-img" fetchpriority="high" width="1200" height="600" />
         <div class="hero-overlay"></div>
@@ -839,19 +828,33 @@ const localBusinessSchema = {
             });
         });
 
-        // ===== TrafficGuard - Load after page is idle =====
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                window.dataTrafficGuard = window.dataTrafficGuard || [];
-                window.dataTrafficGuard.push(['property', 'tg-019640-001']);
-                window.dataTrafficGuard.push(['event','pageview']);
-                var tg = document.createElement('script');
-                tg.type = 'text/javascript';
-                tg.async = true;
-                tg.src = 'https://tgtag.io/tg.js?pid=tg-019640-001';
-                document.body.appendChild(tg);
-            }, 200);
-        });
+        // ===== ANALYTICS SCRIPTS - Load when browser is idle =====
+        function loadAnalytics() {
+            // Google Tag
+            var gtagScript = document.createElement('script');
+            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
+            gtagScript.async = true;
+            document.head.appendChild(gtagScript);
+
+            // TrafficGuard
+            window.dataTrafficGuard = window.dataTrafficGuard || [];
+            window.dataTrafficGuard.push(['property', 'tg-019640-001']);
+            window.dataTrafficGuard.push(['event','pageview']);
+            var tgScript = document.createElement('script');
+            tgScript.type = 'text/javascript';
+            tgScript.async = true;
+            tgScript.src = 'https://tgtag.io/tg.js?pid=tg-019640-001';
+            document.body.appendChild(tgScript);
+        }
+
+        // Load when browser is idle (won't block page)
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadAnalytics, { timeout: 3000 });
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(loadAnalytics, 1500);
+            });
+        }
     </script>
 
     <noscript><img src="https://p.tgtag.io/event?property_id=tg-019640-001&event_name=pageview&no_script=1" width="1" height="1" border="0"/></noscript>
