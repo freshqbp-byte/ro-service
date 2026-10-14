@@ -1,5 +1,5 @@
 ---
-// Full Code - Performance Optimized
+// Full Code - Performance Optimized (v2)
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
@@ -58,13 +58,22 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
-    <!-- Google Tag (gtag.js) - MUST be in head for conversion tracking -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16577170929"></script>
+    <!-- Google Tag - Configured for lazy load -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-16577170929');
+      
+      // Load gtag.js after page is idle
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
+          s.async = true;
+          document.head.appendChild(s);
+        }, 100);
+      });
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -81,7 +90,7 @@ const localBusinessSchema = {
     <link rel="preconnect" href="https://p.tgtag.io" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     
-    <link rel="preload" as="image" href="/ro-banner.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/ro-banner.webp" fetchpriority="high" />
 
     <meta name="geo.region" content="IN-KA" />
     <meta name="geo.placename" content="Bangalore" />
@@ -181,7 +190,7 @@ const localBusinessSchema = {
         .hero {
             position: relative;
             background: linear-gradient(to right, rgba(10, 43, 78, 0.55), rgba(10, 43, 78, 0.15)), 
-                        url('/ro-banner.jpg') center/cover no-repeat;
+                        url('/ro-banner.webp') center/cover no-repeat;
             padding: 50px 20px; 
             color: #fff; 
             text-align: left;
@@ -783,7 +792,6 @@ const localBusinessSchema = {
             });
 
             // ===== GOOGLE ADS CONVERSION TRACKING =====
-
             const form = document.getElementById('serviceFormElement');
             if (form) {
                 form.addEventListener('submit', function() {
@@ -805,18 +813,22 @@ const localBusinessSchema = {
                 });
             });
         });
+
+        // ===== TrafficGuard - Load after page is idle =====
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.dataTrafficGuard = window.dataTrafficGuard || [];
+                window.dataTrafficGuard.push(['property', 'tg-019640-001']);
+                window.dataTrafficGuard.push(['event','pageview']);
+                var tg = document.createElement('script');
+                tg.type = 'text/javascript';
+                tg.async = true;
+                tg.src = 'https://tgtag.io/tg.js?pid=tg-019640-001';
+                document.body.appendChild(tg);
+            }, 200);
+        });
     </script>
 
-    <!-- TrafficGuard - Loaded at end of body for better performance -->
-    <script>
-    window.dataTrafficGuard = window.dataTrafficGuard || [];
-    window.dataTrafficGuard.push(['property', 'tg-019640-001']);
-    window.dataTrafficGuard.push(['event','pageview']);
-    (function() {
-    var tg = document.createElement('script'); tg.type = 'text/javascript'; tg.async = true;tg.src = 'https://tgtag.io/tg.js?pid=tg-019640-001';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tg, s);
-    })();
-    </script>
     <noscript><img src="https://p.tgtag.io/event?property_id=tg-019640-001&event_name=pageview&no_script=1" width="1" height="1" border="0"/></noscript>
 
 </body>
