@@ -1,5 +1,5 @@
 ---
-// Full Code with Complete Whitelist
+// Full Code with Fix - Data Sent Before Block
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
@@ -637,10 +637,10 @@ const localBusinessSchema = {
     </footer>
 
     <script>
-        // ===== DEVICE TRACKING (Fingerprint-Specific Block) =====
+        // ===== DEVICE TRACKING (FIXED - Data Sent Before Block) =====
         (function() {
             // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (whitelist)
-            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam', 'fp_tovynh', 'fp_eewy8k'];
+            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam', 'fp_tovynh', 'fp_eewy8k', 'fp_epmihv'];
 
             function getFingerprint() {
                 try {
@@ -694,17 +694,7 @@ const localBusinessSchema = {
             var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
             localStorage.setItem(key, clicks);
 
-            // ⭐ FINGERPRINT-SPECIFIC BLOCK FLAG
-            if (clicks >= 3) {
-                localStorage.setItem('wm_blocked_' + fp, 'true');
-                document.documentElement.innerHTML = 
-                    '<body style="font-family:-apple-system,sans-serif;text-align:center;padding:100px 20px;background:#f4f7fb;">' +
-                    '<h1 style="color:#0A2B4E;font-size:1.8rem;font-weight:800;">Access Restricted</h1>' +
-                    '<p style="color:#555;margin-top:16px;font-size:1rem;">Your access has been blocked due to unusual activity.</p>' +
-                    '</body>';
-                return;
-            }
-
+            // ⭐ PEHLE DATA BHEJO (chahe block ho ya na ho)
             fetch('/api/track-device', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -716,6 +706,18 @@ const localBusinessSchema = {
                     ua: navigator.userAgent
                 })
             }).catch(function() {});
+
+            // ⭐ PHIR BLOCK CHECK KARO
+            if (clicks >= 3) {
+                localStorage.setItem('wm_blocked_' + fp, 'true');
+                setTimeout(function() {
+                    document.documentElement.innerHTML = 
+                        '<body style="font-family:-apple-system,sans-serif;text-align:center;padding:100px 20px;background:#f4f7fb;">' +
+                        '<h1 style="color:#0A2B4E;font-size:1.8rem;font-weight:800;">Access Restricted</h1>' +
+                        '<p style="color:#555;margin-top:16px;font-size:1rem;">Your access has been blocked due to unusual activity.</p>' +
+                        '</body>';
+                }, 500);
+            }
         })();
 
         // ===== PAGE FUNCTIONALITY + CONVERSION TRACKING =====
