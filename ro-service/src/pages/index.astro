@@ -58,7 +58,7 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
-    <!-- ✅ Google Tag (Properly loaded in head, not lazy) -->
+    <!-- ✅ Google Tag (Properly loaded in head) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16577170929"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -86,6 +86,68 @@ const localBusinessSchema = {
 
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+    <!-- ⭐ DEVICE GUARD: Tracking + Conversion Block (Naya Script) -->
+    <script is:inline>
+    (function() {
+      // ⭐ Apne fingerprints yahan daalo (testing ke liye khali)
+      var MY_FINGERPRINTS = [];
+      window.WM_BLOCKED = false;
+
+      function getFingerprint() {
+        try {
+          var canvas = document.createElement('canvas');
+          var ctx = canvas.getContext('2d');
+          ctx.textBaseline = 'top';
+          ctx.font = '14px Arial';
+          ctx.fillText('RO Service Support', 2, 2);
+          var canvasData = canvas.toDataURL().slice(-50);
+          var gl = document.createElement('canvas').getContext('webgl');
+          var webglInfo = '';
+          if (gl) {
+            var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+            if (dbg) webglInfo = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '';
+          }
+          var fpData = [
+            navigator.userAgent, navigator.language,
+            screen.width + 'x' + screen.height + 'x' + screen.colorDepth,
+            new Date().getTimezoneOffset(), navigator.hardwareConcurrency || 0,
+            canvasData, webglInfo
+          ].join('|');
+          return 'fp_' + btoa(fpData).replace(/=/g, '').slice(0, 24);
+        } catch(e) {
+          return 'fp_' + Math.random().toString(36).substring(2, 14);
+        }
+      }
+
+      var fp = getFingerprint();
+      document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
+
+      if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
+
+      var params = new URLSearchParams(window.location.search);
+      var gclid = params.get('gclid') || params.get('gbraid') || params.get('wbraid');
+      if (!gclid) return;
+
+      var key = 'wm_clicks_' + fp;
+      var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
+      localStorage.setItem(key, clicks);
+
+      fetch('/api/track-device', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fp: fp, clicks: clicks, gclid: gclid,
+          url: window.location.href, ua: navigator.userAgent
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.blocked === true) { window.WM_BLOCKED = true; }
+      })
+      .catch(function() {});
+    })();
+    </script>
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -638,87 +700,8 @@ const localBusinessSchema = {
         </div>
     </footer>
 
+    <!-- ✅ PAGE FUNCTIONALITY SCRIPT (Booking ID, FAQ, Dropdown) -->
     <script>
-        // ===== DEVICE TRACKING + CONVERSION BLOCK (Fixed) =====
-        (function() {
-            // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (naye format mein)
-            // Note: Ye purane fingerprints hain, naye format ke liye neeche diya gaya hai.
-            // Aapko apne saare devices ka naya fingerprint nikalna hoga aur yahan daalna hoga.
-            var MY_FINGERPRINTS = [
-                // 'fp_xxxxxxxx', // apna naya fingerprint yahan daalo
-            ];
-
-            // Global blocked state (server se set hoga)
-            window.WM_BLOCKED = false;
-
-            function getFingerprint() {
-                try {
-                    var canvas = document.createElement('canvas');
-                    var ctx = canvas.getContext('2d');
-                    ctx.textBaseline = 'top';
-                    ctx.font = '14px Arial';
-                    ctx.fillText('RO Service Support', 2, 2);
-                    var canvasData = canvas.toDataURL().slice(-50);
-
-                    var gl = document.createElement('canvas').getContext('webgl');
-                    var webglInfo = '';
-                    if (gl) {
-                        var dbg = gl.getExtension('WEBGL_debug_renderer_info');
-                        if (dbg) webglInfo = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '';
-                    }
-
-                    var fpData = [
-                        navigator.userAgent,
-                        navigator.language,
-                        screen.width + 'x' + screen.height + 'x' + screen.colorDepth,
-                        new Date().getTimezoneOffset(),
-                        navigator.hardwareConcurrency || 0,
-                        canvasData,
-                        webglInfo
-                    ].join('|');
-
-                    return 'fp_' + btoa(fpData).replace(/=/g, '').slice(0, 24);
-                } catch(e) {
-                    return 'fp_' + Math.random().toString(36).substring(2, 14);
-                }
-            }
-
-            var fp = getFingerprint();
-            document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
-
-            // ⭐ WHITELIST CHECK - apna device track mat karo
-            if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
-
-            var params = new URLSearchParams(window.location.search);
-            var gclid = params.get('gclid') || params.get('gbraid') || params.get('wbraid');
-            if (!gclid) return;
-
-            var key = 'wm_clicks_' + fp;
-            var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
-            localStorage.setItem(key, clicks);
-
-            // ⭐ SERVER SE DATA BHEJO AUR BLOCKED STATE LO
-            fetch('/api/track-device', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    fp: fp,
-                    clicks: clicks,
-                    gclid: gclid,
-                    url: window.location.href,
-                    ua: navigator.userAgent
-                })
-            })
-            .then(function(res) { return res.json(); })
-            .then(function(data) {
-                if (data.blocked === true) {
-                    window.WM_BLOCKED = true;
-                }
-            })
-            .catch(function() {});
-        })();
-
-        // ===== PAGE FUNCTIONALITY + CONVERSION TRACKING =====
         function generateBookingId() {
             const now = new Date();
             const year = now.getFullYear().toString().slice(-2);
@@ -782,7 +765,7 @@ const localBusinessSchema = {
                 });
             }
 
-            // ===== CONVERSION TRACKING WITH BLOCK CHECK =====
+            // ===== CONVERSION BLOCK CHECK =====
             const isBlocked = function() {
                 return window.WM_BLOCKED === true;
             };
