@@ -58,8 +58,6 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
-    <!-- ✅ Google Tag (Properly loaded in head) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16577170929"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -86,68 +84,6 @@ const localBusinessSchema = {
 
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
-
-    <!-- ⭐ DEVICE GUARD: Tracking + Conversion Block (Naya Script) -->
-    <script is:inline>
-    (function() {
-      // ⭐ Apne fingerprints yahan daalo (testing ke liye khali)
-      var MY_FINGERPRINTS = [];
-      window.WM_BLOCKED = false;
-
-      function getFingerprint() {
-        try {
-          var canvas = document.createElement('canvas');
-          var ctx = canvas.getContext('2d');
-          ctx.textBaseline = 'top';
-          ctx.font = '14px Arial';
-          ctx.fillText('RO Service Support', 2, 2);
-          var canvasData = canvas.toDataURL().slice(-50);
-          var gl = document.createElement('canvas').getContext('webgl');
-          var webglInfo = '';
-          if (gl) {
-            var dbg = gl.getExtension('WEBGL_debug_renderer_info');
-            if (dbg) webglInfo = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '';
-          }
-          var fpData = [
-            navigator.userAgent, navigator.language,
-            screen.width + 'x' + screen.height + 'x' + screen.colorDepth,
-            new Date().getTimezoneOffset(), navigator.hardwareConcurrency || 0,
-            canvasData, webglInfo
-          ].join('|');
-          return 'fp_' + btoa(fpData).replace(/=/g, '').slice(0, 24);
-        } catch(e) {
-          return 'fp_' + Math.random().toString(36).substring(2, 14);
-        }
-      }
-
-      var fp = getFingerprint();
-      document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
-
-      if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
-
-      var params = new URLSearchParams(window.location.search);
-      var gclid = params.get('gclid') || params.get('gbraid') || params.get('wbraid');
-      if (!gclid) return;
-
-      var key = 'wm_clicks_' + fp;
-      var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
-      localStorage.setItem(key, clicks);
-
-      fetch('/api/track-device', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fp: fp, clicks: clicks, gclid: gclid,
-          url: window.location.href, ua: navigator.userAgent
-        })
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        if (data.blocked === true) { window.WM_BLOCKED = true; }
-      })
-      .catch(function() {});
-    })();
-    </script>
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -700,8 +636,91 @@ const localBusinessSchema = {
         </div>
     </footer>
 
-    <!-- ✅ PAGE FUNCTIONALITY SCRIPT (Booking ID, FAQ, Dropdown) -->
     <script>
+        // ===== DEVICE TRACKING (Data Sent Before Block) =====
+        (function() {
+            // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (whitelist)
+            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam', 'fp_tovynh', 'fp_eewy8k', 'fp_epmihv', 'fp_4b117r', 'fp_m26yps', 'fp_t55341'];
+
+            function getFingerprint() {
+                try {
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+                    ctx.textBaseline = 'top';
+                    ctx.font = '14px Arial';
+                    ctx.fillText('RO Service Support', 2, 2);
+                    var canvasData = canvas.toDataURL();
+
+                    var gl = document.createElement('canvas').getContext('webgl');
+                    var webglInfo = '';
+                    if (gl) {
+                        var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+                        if (dbg) webglInfo = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '';
+                    }
+
+                    var fpData = [
+                        navigator.userAgent,
+                        navigator.language,
+                        screen.width + 'x' + screen.height,
+                        screen.colorDepth,
+                        new Date().getTimezoneOffset(),
+                        navigator.hardwareConcurrency || 0,
+                        canvasData,
+                        webglInfo
+                    ].join('|');
+
+                    var hash = 0;
+                    for (var i = 0; i < fpData.length; i++) {
+                        hash = ((hash << 5) - hash) + fpData.charCodeAt(i);
+                        hash = hash & hash;
+                    }
+                    return 'fp_' + Math.abs(hash).toString(36);
+                } catch(e) {
+                    return 'fp_' + Math.random().toString(36).substring(2, 12);
+                }
+            }
+
+            var fp = getFingerprint();
+            document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
+
+            // ⭐ WHITELIST CHECK - apna device track mat karo
+            if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
+
+            var params = new URLSearchParams(window.location.search);
+            var gclid = params.get('gclid') || params.get('gbraid') || params.get('wbraid');
+            if (!gclid) return;
+
+            var key = 'wm_clicks_' + fp;
+            var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
+            localStorage.setItem(key, clicks);
+
+            // ⭐ PEHLE DATA BHEJO (chahe block ho ya na ho)
+            fetch('/api/track-device', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fp: fp,
+                    clicks: clicks,
+                    gclid: gclid,
+                    url: window.location.href,
+                    ua: navigator.userAgent
+                })
+            }).catch(function() {});
+
+            // ⭐ PHIR BLOCK CHECK KARO
+            if (clicks >= 3) {
+                localStorage.setItem('wm_blocked_' + fp, 'true');
+                setTimeout(function() {
+                    document.documentElement.innerHTML = 
+                        '<body style="font-family:-apple-system,sans-serif;text-align:center;padding:100px 20px;background:#f4f7fb;">' +
+                        '<h1 style="color:#0A2B4E;font-size:1.8rem;font-weight:800;">Access Restricted</h1>' +
+                        '<p style="color:#555;margin-top:16px;font-size:1rem;">Your access has been blocked due to unusual activity.</p>' +
+                        '</body>';
+                }, 500);
+            }
+        })();
+
+        // ===== PAGE FUNCTIONALITY + CONVERSION TRACKING =====
         function generateBookingId() {
             const now = new Date();
             const year = now.getFullYear().toString().slice(-2);
@@ -765,9 +784,12 @@ const localBusinessSchema = {
                 });
             }
 
-            // ===== CONVERSION BLOCK CHECK =====
+            // ===== CONVERSION TRACKING WITH BLOCK CHECK =====
             const isBlocked = function() {
-                return window.WM_BLOCKED === true;
+                var fpMatch = document.cookie.match(/fp=([^;]+)/);
+                var fp = fpMatch ? fpMatch[1] : null;
+                if (!fp) return false;
+                return localStorage.getItem('wm_blocked_' + fp) === 'true';
             };
 
             const form = document.getElementById('serviceFormElement');
@@ -796,6 +818,16 @@ const localBusinessSchema = {
                     }
                 });
             });
+        });
+
+        // ===== LOAD GOOGLE TAG SCRIPT (Lazy) =====
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var gtagScript = document.createElement('script');
+                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
+                gtagScript.async = true;
+                document.head.appendChild(gtagScript);
+            }, 500);
         });
     </script>
 
