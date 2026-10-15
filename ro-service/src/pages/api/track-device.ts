@@ -6,7 +6,7 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
 
-    // ⭐ REAL IP NIKALNE KA SAHI TARIKA
+    // Real IP nikalne ka sahi tarika
     const ip = request.headers.get('cf-connecting-ip')?.trim()
             || request.headers.get('x-real-ip')?.trim()
             || request.headers.get('x-forwarded-for')?.split(',')[0].trim()
