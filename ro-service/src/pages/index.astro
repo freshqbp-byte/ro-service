@@ -1,5 +1,5 @@
 ---
-// Full Code - Performance Optimized Final
+// Full Code - Final with Booking Field Fix
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
@@ -58,7 +58,7 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
-    <!-- Google Tag setup (script loads later) -->
+    <!-- Google Tag setup -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -75,12 +75,7 @@ const localBusinessSchema = {
     
     <meta name="theme-color" content="#0A2B4E" />
     
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://tgtag.io" crossorigin>
-    <link rel="preconnect" href="https://p.tgtag.io" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    
-    <!-- Preload hero image -->
     <link rel="preload" as="image" href="/ro-banner.webp" type="image/webp" fetchpriority="high" />
 
     <meta name="geo.region" content="IN-KA" />
@@ -97,9 +92,7 @@ const localBusinessSchema = {
         html, body { width: 100%; overflow-x: hidden; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            color: #222222; 
-            line-height: 1.5; 
-            background: #f4f7fb; 
+            color: #222222; line-height: 1.5; background: #f4f7fb; 
         }
         
         .container { width: 100%; max-width: 100%; margin: 0 auto; }
@@ -148,80 +141,44 @@ const localBusinessSchema = {
         }
 
         .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #fff;
-            min-width: 220px;
-            border-radius: 8px;
+            display: none; position: absolute; top: 100%; left: 0;
+            background: #fff; min-width: 220px; border-radius: 8px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            padding: 8px 0;
-            z-index: 200;
-            margin-top: 4px;
+            padding: 8px 0; z-index: 200; margin-top: 4px;
             border: 1px solid #e5e7eb;
         }
         .dropdown-menu.show { display: block; }
         .dropdown-menu a {
-            display: block;
-            padding: 12px 20px;
-            color: #0A2B4E;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
+            display: block; padding: 12px 20px; color: #0A2B4E;
+            text-decoration: none; font-size: 0.9rem; font-weight: 600;
+            transition: all 0.2s; border-left: 3px solid transparent;
         }
         .dropdown-menu a:hover {
-            background: #f4f7fb;
-            border-left-color: #f97316;
-            color: #f97316;
+            background: #f4f7fb; border-left-color: #f97316; color: #f97316;
         }
 
         .hero {
-            position: relative;
-            padding: 50px 20px; 
-            color: #fff; 
-            text-align: left;
-            overflow: hidden;
-            min-height: 200px;
+            position: relative; padding: 50px 20px; color: #fff; 
+            text-align: left; overflow: hidden; min-height: 200px;
         }
         .hero-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            z-index: 1;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top; z-index: 1;
         }
         .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
             background: linear-gradient(to right, rgba(10, 43, 78, 0.55), rgba(10, 43, 78, 0.15));
             z-index: 2;
         }
-        .hero-inner {
-            position: relative;
-            z-index: 3;
-            max-width: 720px;
-            margin: 0 auto;
-        }
+        .hero-inner { position: relative; z-index: 3; max-width: 720px; margin: 0 auto; }
         .hero h1 { 
-            font-size: 2rem; 
-            font-weight: 800; 
-            line-height: 1.2; 
-            margin-bottom: 8px; 
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-size: 2rem; font-weight: 800; line-height: 1.2; 
+            margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         .hero p { 
-            font-size: 1rem; 
-            opacity: 0.95; 
-            line-height: 1.5;
+            font-size: 1rem; opacity: 0.95; line-height: 1.5;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
@@ -238,8 +195,7 @@ const localBusinessSchema = {
 
         .form-section { padding: 0 16px 40px; background: #f4f7fb; }
         .form-box {
-            background: #fff; border-radius: 16px;
-            padding: 24px 20px;
+            background: #fff; border-radius: 16px; padding: 24px 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             margin-top: -20px; position: relative; z-index: 10;
             max-width: 720px; margin-left: auto; margin-right: auto;
@@ -253,9 +209,8 @@ const localBusinessSchema = {
         .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; color: #333; }
         .form-group label span { color: #f97316; }
         .form-group input, .form-group textarea { 
-            width: 100%; padding: 10px 16px;
-            border: 1px solid #ccc; border-radius: 30px;
-            font-size: 0.95rem; font-family: inherit;
+            width: 100%; padding: 10px 16px; border: 1px solid #ccc;
+            border-radius: 30px; font-size: 0.95rem; font-family: inherit;
             background: #fff; color: #111; outline: none;
             transition: border-color 0.2s;
         }
@@ -263,12 +218,10 @@ const localBusinessSchema = {
         .form-group input:focus, .form-group textarea:focus { border-color: #0A2B4E; }
 
         .submit-btn {
-            display: block; width: 100%;
-            padding: 12px 20px; border-radius: 30px;
-            font-weight: 700; font-size: 1rem;
-            cursor: pointer; background: #f97316;
-            color: #ffffff; border: none;
-            margin-top: 8px; transition: background 0.2s;
+            display: block; width: 100%; padding: 12px 20px;
+            border-radius: 30px; font-weight: 700; font-size: 1rem;
+            cursor: pointer; background: #f97316; color: #ffffff;
+            border: none; margin-top: 8px; transition: background 0.2s;
         }
         .submit-btn:hover { background: #ea580c; }
 
@@ -323,43 +276,26 @@ const localBusinessSchema = {
             line-height: 1.7; text-align: justify; margin-bottom: 24px;
         }
         .faq-item {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 16px 18px;
-            margin-bottom: 10px;
-            transition: border-color 0.2s;
+            background: #f9fafb; border: 1px solid #e5e7eb;
+            border-radius: 10px; padding: 16px 18px;
+            margin-bottom: 10px; transition: border-color 0.2s;
         }
         .faq-item:hover { border-color: #f97316; }
         .faq-question {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #0A2B4E;
-            text-align: justify;
-            line-height: 1.4;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
+            font-size: 0.95rem; font-weight: 700; color: #0A2B4E;
+            text-align: justify; line-height: 1.4; cursor: pointer;
+            display: flex; justify-content: space-between;
+            align-items: flex-start; gap: 12px;
         }
         .faq-question::after {
-            content: "+";
-            color: #f97316;
-            font-size: 1.3rem;
-            font-weight: 800;
-            line-height: 1;
-            flex-shrink: 0;
+            content: "+"; color: #f97316; font-size: 1.3rem;
+            font-weight: 800; line-height: 1; flex-shrink: 0;
         }
         .faq-item.active .faq-question::after { content: "−"; }
         .faq-answer {
-            display: none;
-            font-size: 0.88rem;
-            color: #555;
-            line-height: 1.7;
-            text-align: justify;
-            margin-top: 10px;
-            padding-top: 10px;
+            display: none; font-size: 0.88rem; color: #555;
+            line-height: 1.7; text-align: justify;
+            margin-top: 10px; padding-top: 10px;
             border-top: 1px solid #e5e7eb;
         }
         .faq-item.active .faq-answer { display: block; }
@@ -377,13 +313,10 @@ const localBusinessSchema = {
         }
 
         .side-ribbon {
-            position: fixed; right: 0; top: 50%;
-            transform: translateY(-50%);
-            background: #f97316; color: #fff;
-            padding: 20px 8px;
+            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+            background: #f97316; color: #fff; padding: 20px 8px;
             writing-mode: vertical-rl; text-orientation: mixed;
-            font-weight: 800; font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-weight: 800; font-size: 0.85rem; letter-spacing: 1px;
             border-top-left-radius: 8px; border-bottom-left-radius: 8px;
             cursor: pointer; text-decoration: none;
             z-index: 200; box-shadow: -2px 2px 10px rgba(0,0,0,0.15);
@@ -391,15 +324,12 @@ const localBusinessSchema = {
 
         .call-float {
             position: fixed; bottom: 24px; left: 24px;
-            background: #f97316; 
-            width: 56px; height: 56px;
+            background: #f97316; width: 56px; height: 56px;
             border-radius: 50%; display: flex;
             align-items: center; justify-content: center;
-            color: #fff; font-size: 1.6rem;
-            text-decoration: none;
+            color: #fff; font-size: 1.6rem; text-decoration: none;
             box-shadow: 0 4px 20px rgba(249, 115, 22, 0.5);
-            z-index: 200;
-            animation: pulse 2s infinite;
+            z-index: 200; animation: pulse 2s infinite;
         }
         .call-float:hover { background: #ea580c; }
 
@@ -410,107 +340,69 @@ const localBusinessSchema = {
         }
 
         footer { 
-            background: #0A2B4E; 
-            color: #94a3b8;
-            padding: 40px 24px 24px; 
-            font-size: 0.88rem; 
+            background: #0A2B4E; color: #94a3b8;
+            padding: 40px 24px 24px; font-size: 0.88rem; 
         }
         .footer-inner { max-width: 720px; margin: 0 auto; }
         .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 28px;
-            margin-bottom: 28px;
+            display: grid; grid-template-columns: 1fr;
+            gap: 28px; margin-bottom: 28px;
         }
         @media (min-width: 768px) {
             .footer-grid { grid-template-columns: 1.2fr 1fr 1.2fr; gap: 32px; }
         }
         .footer-col h4 {
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 800;
-            margin-bottom: 14px;
-            letter-spacing: 0.3px;
+            color: #fff; font-size: 0.95rem; font-weight: 800;
+            margin-bottom: 14px; letter-spacing: 0.3px;
         }
         .footer-col p, .footer-col a {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            line-height: 1.7;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 6px;
-            text-align: justify;
+            color: #94a3b8; font-size: 0.85rem;
+            line-height: 1.7; text-decoration: none;
+            display: block; margin-bottom: 6px; text-align: justify;
         }
         .footer-col a:hover { color: #f97316; }
         .footer-brand {
-            color: #fff;
-            font-size: 1.15rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            display: block;
+            color: #fff; font-size: 1.15rem;
+            font-weight: 800; margin-bottom: 10px; display: block;
         }
         .footer-brand span { color: #f97316; }
         .footer-tagline {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            text-align: justify;
-            margin-bottom: 12px;
+            color: #94a3b8; font-size: 0.85rem;
+            line-height: 1.6; text-align: justify; margin-bottom: 12px;
         }
         .support-badge {
-            display: inline-block;
-            background: rgba(249, 115, 22, 0.15);
-            color: #f97316;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-top: 4px;
+            display: inline-block; background: rgba(249, 115, 22, 0.15);
+            color: #f97316; font-size: 0.75rem; font-weight: 700;
+            padding: 4px 10px; border-radius: 20px; margin-top: 4px;
         }
 
         .footer-disclaimer {
             background: rgba(249, 115, 22, 0.08);
             border-left: 3px solid #f97316;
-            padding: 14px 16px;
-            border-radius: 6px;
-            font-size: 0.78rem;
-            color: #94a3b8;
-            line-height: 1.7;
-            text-align: justify;
-            margin-bottom: 20px;
+            padding: 14px 16px; border-radius: 6px;
+            font-size: 0.78rem; color: #94a3b8;
+            line-height: 1.7; text-align: justify; margin-bottom: 20px;
         }
-        .footer-disclaimer strong {
-            color: #f97316;
-            font-weight: 800;
-        }
+        .footer-disclaimer strong { color: #f97316; font-weight: 800; }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 16px;
-            text-align: center;
-            color: #64748b;
-            font-size: 0.78rem;
-            margin-bottom: 12px;
+            padding-top: 16px; text-align: center;
+            color: #64748b; font-size: 0.78rem; margin-bottom: 12px;
         }
 
         .footer-legal-links {
-            text-align: center;
-            padding-top: 12px;
+            text-align: center; padding-top: 12px;
             border-top: 1px solid rgba(255,255,255,0.08);
         }
         .footer-legal-links a {
-            color: #94a3b8;
-            font-size: 0.78rem;
-            text-decoration: none;
-            transition: color 0.2s;
-            display: inline;
-            margin: 0;
+            color: #94a3b8; font-size: 0.78rem;
+            text-decoration: none; transition: color 0.2s;
+            display: inline; margin: 0;
         }
         .footer-legal-links a:hover { color: #f97316; }
         .footer-legal-links .divider {
-            color: #475569;
-            margin: 0 6px;
-            font-size: 0.78rem;
+            color: #475569; margin: 0 6px; font-size: 0.78rem;
         }
     </style>
 </head>
@@ -699,7 +591,6 @@ const localBusinessSchema = {
     </section>
 
     <a href={PHONE_LINK} class="side-ribbon">BOOK A SERVICE</a>
-
     <a href={PHONE_LINK} class="call-float" aria-label="Call Now">📞</a>
 
     <footer>
@@ -747,6 +638,85 @@ const localBusinessSchema = {
     </footer>
 
     <script>
+        // ===== DEVICE TRACKING (Fingerprint-Specific Block) =====
+        (function() {
+            var MY_FINGERPRINTS = ['fp_i70rcm'];
+
+            function getFingerprint() {
+                try {
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+                    ctx.textBaseline = 'top';
+                    ctx.font = '14px Arial';
+                    ctx.fillText('RO Service Support', 2, 2);
+                    var canvasData = canvas.toDataURL();
+
+                    var gl = document.createElement('canvas').getContext('webgl');
+                    var webglInfo = '';
+                    if (gl) {
+                        var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+                        if (dbg) webglInfo = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '';
+                    }
+
+                    var fpData = [
+                        navigator.userAgent,
+                        navigator.language,
+                        screen.width + 'x' + screen.height,
+                        screen.colorDepth,
+                        new Date().getTimezoneOffset(),
+                        navigator.hardwareConcurrency || 0,
+                        canvasData,
+                        webglInfo
+                    ].join('|');
+
+                    var hash = 0;
+                    for (var i = 0; i < fpData.length; i++) {
+                        hash = ((hash << 5) - hash) + fpData.charCodeAt(i);
+                        hash = hash & hash;
+                    }
+                    return 'fp_' + Math.abs(hash).toString(36);
+                } catch(e) {
+                    return 'fp_' + Math.random().toString(36).substring(2, 12);
+                }
+            }
+
+            var fp = getFingerprint();
+            document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
+
+            if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
+
+            var params = new URLSearchParams(window.location.search);
+            var gclid = params.get('gclid') || params.get('gbraid') || params.get('wbraid');
+            if (!gclid) return;
+
+            var key = 'wm_clicks_' + fp;
+            var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
+            localStorage.setItem(key, clicks);
+
+            if (clicks >= 3) {
+                localStorage.setItem('wm_blocked_' + fp, 'true');
+                document.documentElement.innerHTML = 
+                    '<body style="font-family:-apple-system,sans-serif;text-align:center;padding:100px 20px;background:#f4f7fb;">' +
+                    '<h1 style="color:#0A2B4E;font-size:1.8rem;font-weight:800;">Access Restricted</h1>' +
+                    '<p style="color:#555;margin-top:16px;font-size:1rem;">Your access has been blocked due to unusual activity.</p>' +
+                    '</body>';
+                return;
+            }
+
+            fetch('/api/track-device', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fp: fp,
+                    clicks: clicks,
+                    gclid: gclid,
+                    url: window.location.href,
+                    ua: navigator.userAgent
+                })
+            }).catch(function() {});
+        })();
+
+        // ===== PAGE FUNCTIONALITY + CONVERSION TRACKING =====
         function generateBookingId() {
             const now = new Date();
             const year = now.getFullYear().toString().slice(-2);
@@ -757,107 +727,106 @@ const localBusinessSchema = {
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // ✅ FIX: bookingIdField null check
             const bookingId = generateBookingId();
-            document.getElementById('bookingIdField').value = bookingId;
-            try {
-                sessionStorage.setItem('bookingId', bookingId);
-            } catch(e) {}
+            const bookingField = document.getElementById('bookingIdField');
+            if (bookingField) {
+                bookingField.value = bookingId;
+            }
+            try { sessionStorage.setItem('bookingId', bookingId); } catch(e) {}
 
             const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(function(item) {
                 const question = item.querySelector('.faq-question');
-                question.addEventListener('click', function() {
-                    item.classList.toggle('active');
-                });
+                if (question) {
+                    question.addEventListener('click', function() { item.classList.toggle('active'); });
+                }
             });
 
             function scrollToForm() {
                 const formSection = document.getElementById('serviceForm');
                 if (formSection) {
                     formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    setTimeout(function() {
-                        document.getElementById('name').focus();
+                    setTimeout(function() { 
+                        const nameField = document.getElementById('name');
+                        if (nameField) nameField.focus(); 
                     }, 600);
                 }
             }
 
-            document.getElementById('searchBtn').addEventListener('click', scrollToForm);
-            document.getElementById('userBtn').addEventListener('click', scrollToForm);
-            document.getElementById('cartBtn').addEventListener('click', scrollToForm);
+            const searchBtn = document.getElementById('searchBtn');
+            const userBtn = document.getElementById('userBtn');
+            const cartBtn = document.getElementById('cartBtn');
+            if (searchBtn) searchBtn.addEventListener('click', scrollToForm);
+            if (userBtn) userBtn.addEventListener('click', scrollToForm);
+            if (cartBtn) cartBtn.addEventListener('click', scrollToForm);
 
             const menuBtn = document.getElementById('menuBtn');
             const dropdown = document.getElementById('dropdownMenu');
 
-            menuBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                dropdown.classList.toggle('show');
-            });
-
-            dropdown.querySelectorAll('a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    dropdown.classList.remove('show');
+            if (menuBtn && dropdown) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
                 });
-            });
 
-            document.addEventListener('click', function(e) {
-                if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.classList.remove('show');
-                }
-            });
+                dropdown.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() { dropdown.classList.remove('show'); });
+                });
 
-            // ===== GOOGLE ADS CONVERSION TRACKING =====
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            // ===== CONVERSION TRACKING WITH BLOCK CHECK =====
+            const isBlocked = function() {
+                var fpMatch = document.cookie.match(/fp=([^;]+)/);
+                var fp = fpMatch ? fpMatch[1] : null;
+                if (!fp) return false;
+                return localStorage.getItem('wm_blocked_' + fp) === 'true';
+            };
+
             const form = document.getElementById('serviceFormElement');
             if (form) {
-                form.addEventListener('submit', function() {
+                form.addEventListener('submit', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
                     if (typeof gtag === 'function') {
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9'
-                        });
+                        gtag('event', 'conversion', { 'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9' });
                     }
                 });
             }
 
             document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
                     if (typeof gtag === 'function') {
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9'
-                        });
+                        gtag('event', 'conversion', { 'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9' });
                     }
                 });
             });
         });
 
-        // ===== ANALYTICS SCRIPTS - Load when browser is idle =====
-        function loadAnalytics() {
-            // Google Tag
-            var gtagScript = document.createElement('script');
-            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
-            gtagScript.async = true;
-            document.head.appendChild(gtagScript);
-
-            // TrafficGuard
-            window.dataTrafficGuard = window.dataTrafficGuard || [];
-            window.dataTrafficGuard.push(['property', 'tg-019640-001']);
-            window.dataTrafficGuard.push(['event','pageview']);
-            var tgScript = document.createElement('script');
-            tgScript.type = 'text/javascript';
-            tgScript.async = true;
-            tgScript.src = 'https://tgtag.io/tg.js?pid=tg-019640-001';
-            document.body.appendChild(tgScript);
-        }
-
-        // Load when browser is idle (won't block page)
-        if ('requestIdleCallback' in window) {
-            window.requestIdleCallback(loadAnalytics, { timeout: 3000 });
-        } else {
-            window.addEventListener('load', function() {
-                setTimeout(loadAnalytics, 1500);
-            });
-        }
+        // ===== LOAD GOOGLE TAG SCRIPT (Lazy) =====
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var gtagScript = document.createElement('script');
+                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
+                gtagScript.async = true;
+                document.head.appendChild(gtagScript);
+            }, 500);
+        });
     </script>
-
-    <noscript><img src="https://p.tgtag.io/event?property_id=tg-019640-001&event_name=pageview&no_script=1" width="1" height="1" border="0"/></noscript>
 
 </body>
 </html>
