@@ -1,5 +1,5 @@
 ---
-// Full Code - Final with Booking Field Fix
+// Full Code with Updated Whitelist
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
@@ -58,7 +58,6 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
-    <!-- Google Tag setup -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -640,7 +639,8 @@ const localBusinessSchema = {
     <script>
         // ===== DEVICE TRACKING (Fingerprint-Specific Block) =====
         (function() {
-            var MY_FINGERPRINTS = ['fp_i70rcm'];
+            // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (whitelist)
+            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam'];
 
             function getFingerprint() {
                 try {
@@ -683,6 +683,7 @@ const localBusinessSchema = {
             var fp = getFingerprint();
             document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
 
+            // ⭐ WHITELIST CHECK - apna device track mat karo
             if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
 
             var params = new URLSearchParams(window.location.search);
@@ -693,6 +694,7 @@ const localBusinessSchema = {
             var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
             localStorage.setItem(key, clicks);
 
+            // ⭐ FINGERPRINT-SPECIFIC BLOCK FLAG
             if (clicks >= 3) {
                 localStorage.setItem('wm_blocked_' + fp, 'true');
                 document.documentElement.innerHTML = 
@@ -727,7 +729,6 @@ const localBusinessSchema = {
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // ✅ FIX: bookingIdField null check
             const bookingId = generateBookingId();
             const bookingField = document.getElementById('bookingIdField');
             if (bookingField) {
