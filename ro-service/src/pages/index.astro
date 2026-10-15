@@ -1,5 +1,5 @@
 ---
-// Full Code with Real IP Fix + Updated Whitelist
+// Full Code - Final with Whitelist
 const PHONE = "+91 90083 15606";
 const PHONE_LINK = "tel:+919008315606";
 const EMAIL = "info@roservicesupport.co.in";
@@ -640,7 +640,7 @@ const localBusinessSchema = {
         // ===== DEVICE TRACKING (Data Sent Before Block) =====
         (function() {
             // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (whitelist)
-            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam', 'fp_tovynh', 'fp_eewy8k', 'fp_epmihv', 'fp_4b117r', 'fp_m26yps', 'fp_t55341'];
+            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam', 'fp_tovynh', 'fp_eewy8k', 'fp_epmihv', 'fp_4b117r', 'fp_m26yps', 'fp_t55341', 'fp_l8xc10', 'fp_lybcwx', 'fp_ly01lt'];
 
             function getFingerprint() {
                 try {
@@ -683,7 +683,7 @@ const localBusinessSchema = {
             var fp = getFingerprint();
             document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
 
-            // ⭐ WHITELIST CHECK - apna device track mat karo
+            // Whitelist check
             if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
 
             var params = new URLSearchParams(window.location.search);
@@ -694,7 +694,7 @@ const localBusinessSchema = {
             var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
             localStorage.setItem(key, clicks);
 
-            // ⭐ PEHLE DATA BHEJO (chahe block ho ya na ho)
+            // ⭐ PEHLE DATA BHEJO
             fetch('/api/track-device', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -784,7 +784,7 @@ const localBusinessSchema = {
                 });
             }
 
-            // ===== CONVERSION TRACKING WITH BLOCK CHECK =====
+            // ===== CONVERSION BLOCK =====
             const isBlocked = function() {
                 var fpMatch = document.cookie.match(/fp=([^;]+)/);
                 var fp = fpMatch ? fpMatch[1] : null;
@@ -792,6 +792,7 @@ const localBusinessSchema = {
                 return localStorage.getItem('wm_blocked_' + fp) === 'true';
             };
 
+            // Form Submit Block
             const form = document.getElementById('serviceFormElement');
             if (form) {
                 form.addEventListener('submit', function(e) {
@@ -806,6 +807,7 @@ const localBusinessSchema = {
                 });
             }
 
+            // Call Button Block
             document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     if (isBlocked()) {
@@ -818,9 +820,31 @@ const localBusinessSchema = {
                     }
                 });
             });
+
+            // WhatsApp Block
+            document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
+                });
+            });
+
+            // Email Block
+            document.querySelectorAll('a[href^="mailto:"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
+                });
+            });
         });
 
-        // ===== LOAD GOOGLE TAG SCRIPT (Lazy) =====
+        // Load Google Tag (Lazy)
         window.addEventListener('load', function() {
             setTimeout(function() {
                 var gtagScript = document.createElement('script');
