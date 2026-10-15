@@ -58,6 +58,8 @@ const localBusinessSchema = {
 <head>
     <meta charset="UTF-8" />
 
+    <!-- ✅ Google Tag (Properly loaded in head, not lazy) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16577170929"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -637,10 +639,17 @@ const localBusinessSchema = {
     </footer>
 
     <script>
-        // ===== DEVICE TRACKING (Data Sent Before Block) =====
+        // ===== DEVICE TRACKING + CONVERSION BLOCK (Fixed) =====
         (function() {
-            // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (whitelist)
-            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam', 'fp_tovynh', 'fp_eewy8k', 'fp_epmihv', 'fp_4b117r', 'fp_m26yps', 'fp_t55341'];
+            // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (naye format mein)
+            // Note: Ye purane fingerprints hain, naye format ke liye neeche diya gaya hai.
+            // Aapko apne saare devices ka naya fingerprint nikalna hoga aur yahan daalna hoga.
+            var MY_FINGERPRINTS = [
+                // 'fp_xxxxxxxx', // apna naya fingerprint yahan daalo
+            ];
+
+            // Global blocked state (server se set hoga)
+            window.WM_BLOCKED = false;
 
             function getFingerprint() {
                 try {
@@ -649,7 +658,7 @@ const localBusinessSchema = {
                     ctx.textBaseline = 'top';
                     ctx.font = '14px Arial';
                     ctx.fillText('RO Service Support', 2, 2);
-                    var canvasData = canvas.toDataURL();
+                    var canvasData = canvas.toDataURL().slice(-50);
 
                     var gl = document.createElement('canvas').getContext('webgl');
                     var webglInfo = '';
@@ -661,22 +670,16 @@ const localBusinessSchema = {
                     var fpData = [
                         navigator.userAgent,
                         navigator.language,
-                        screen.width + 'x' + screen.height,
-                        screen.colorDepth,
+                        screen.width + 'x' + screen.height + 'x' + screen.colorDepth,
                         new Date().getTimezoneOffset(),
                         navigator.hardwareConcurrency || 0,
                         canvasData,
                         webglInfo
                     ].join('|');
 
-                    var hash = 0;
-                    for (var i = 0; i < fpData.length; i++) {
-                        hash = ((hash << 5) - hash) + fpData.charCodeAt(i);
-                        hash = hash & hash;
-                    }
-                    return 'fp_' + Math.abs(hash).toString(36);
+                    return 'fp_' + btoa(fpData).replace(/=/g, '').slice(0, 24);
                 } catch(e) {
-                    return 'fp_' + Math.random().toString(36).substring(2, 12);
+                    return 'fp_' + Math.random().toString(36).substring(2, 14);
                 }
             }
 
@@ -694,7 +697,7 @@ const localBusinessSchema = {
             var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
             localStorage.setItem(key, clicks);
 
-            // ⭐ PEHLE DATA BHEJO (chahe block ho ya na ho)
+            // ⭐ SERVER SE DATA BHEJO AUR BLOCKED STATE LO
             fetch('/api/track-device', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -705,19 +708,14 @@ const localBusinessSchema = {
                     url: window.location.href,
                     ua: navigator.userAgent
                 })
-            }).catch(function() {});
-
-            // ⭐ PHIR BLOCK CHECK KARO
-            if (clicks >= 3) {
-                localStorage.setItem('wm_blocked_' + fp, 'true');
-                setTimeout(function() {
-                    document.documentElement.innerHTML = 
-                        '<body style="font-family:-apple-system,sans-serif;text-align:center;padding:100px 20px;background:#f4f7fb;">' +
-                        '<h1 style="color:#0A2B4E;font-size:1.8rem;font-weight:800;">Access Restricted</h1>' +
-                        '<p style="color:#555;margin-top:16px;font-size:1rem;">Your access has been blocked due to unusual activity.</p>' +
-                        '</body>';
-                }, 500);
-            }
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.blocked === true) {
+                    window.WM_BLOCKED = true;
+                }
+            })
+            .catch(function() {});
         })();
 
         // ===== PAGE FUNCTIONALITY + CONVERSION TRACKING =====
@@ -786,10 +784,7 @@ const localBusinessSchema = {
 
             // ===== CONVERSION TRACKING WITH BLOCK CHECK =====
             const isBlocked = function() {
-                var fpMatch = document.cookie.match(/fp=([^;]+)/);
-                var fp = fpMatch ? fpMatch[1] : null;
-                if (!fp) return false;
-                return localStorage.getItem('wm_blocked_' + fp) === 'true';
+                return window.WM_BLOCKED === true;
             };
 
             const form = document.getElementById('serviceFormElement');
@@ -818,16 +813,6 @@ const localBusinessSchema = {
                     }
                 });
             });
-        });
-
-        // ===== LOAD GOOGLE TAG SCRIPT (Lazy) =====
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var gtagScript = document.createElement('script');
-                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
-                gtagScript.async = true;
-                document.head.appendChild(gtagScript);
-            }, 500);
         });
     </script>
 
