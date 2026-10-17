@@ -1,0 +1,18 @@
+---
+const brands = ["Kent", "Aquaguard", "Pureit", "AO Smith", "Livpure", "Havells", "Blue Star", "Faber", "Nasaka", "Hindware"];
+---
+<section style="background:#f9fafb;">
+  <div class="container">
+    <h2>Sabhi Brands Ki Service</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      {brands.map(b => (
+        <span style="background:#fff;border:1px solid #e5e7eb;padding:10px 18px;border-radius:8px;font-weight:600;color:#374151;">
+          {b}
+        </span>
+      ))}
+    </div>
+    <p style="text-align:center;margin-top:20px;color:#6b7280;">
+      Aapka brand list mein nahi hai? Call karein — hum har brand ki service karte hain.
+    </p>
+  </div>
+</section>

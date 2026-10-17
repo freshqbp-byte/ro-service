@@ -1,0 +1,884 @@
+---
+// Full Code - With Custom Logo Image Option
+const PHONE = "+91 7090170092";
+const PHONE_LINK = "tel:+917090170092";
+const EMAIL = "info@roservicesupport.co.in";
+
+const faqs = [
+  { q: "What services does your water purifier service center provide?", a: "Our water purifier service center provides complete RO repair, new installation, annual maintenance (AMC), filter and membrane replacement, deep cleaning, and commercial RO service for offices, hotels, and restaurants." },
+  { q: "How do I find a water purifier service center near me?", a: "Simply fill out the service request form on this page or call us at +91 7090170092. Our customer support team will assign a certified technician near your location within 60 minutes." },
+  { q: "What is the RO service center number to book a technician?", a: "You can call our RO service center number +91 7090170092 to book a technician. We are available 24x7 for doorstep service." },
+  { q: "Do you provide doorstep service?", a: "Yes, we provide 100% doorstep service. Our certified technicians arrive at your home, diagnose the issue, and complete the repair or installation on the spot with genuine spare parts." },
+  { q: "How much does RO repair cost?", a: "Our standard service visit starts at just ₹299. This includes a full checkup and basic cleaning. Any spare parts or replacements are charged separately after informing you in advance." },
+  { q: "Do you offer a warranty on repairs?", a: "Yes, every repair we perform comes with a 30-day service warranty. If the same issue reoccurs within this period, we will fix it free of charge." },
+  { q: "Which areas do you serve?", a: "We serve all major areas across Bangalore and nearby localities. To confirm service availability in your specific area, please call us at +91 7090170092 or submit the form above." }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "RO Service Support",
+  "description": "Professional water purifier service center in Bangalore offering RO repair, installation, AMC, and maintenance at your doorstep. Available 24x7.",
+  "image": "https://roservicesupport.co.in/logo.png",
+  "url": "https://roservicesupport.co.in/",
+  "telephone": "+917090170092",
+  "email": "info@roservicesupport.co.in",
+  "priceRange": "₹299 - ₹2,499",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bangalore",
+    "addressRegion": "Karnataka",
+    "addressCountry": "IN"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": "12.9716", "longitude": "77.5946" },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "areaServed": { "@type": "City", "name": "Bangalore" },
+  "serviceType": ["RO Repair", "Water Purifier Installation", "RO AMC", "Filter Replacement", "Deep Cleaning"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "50000" }
+};
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-16577170929');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RO Service Center Bangalore | Water Purifier Service Center Near Me</title>
+    <meta name="description" content="Trusted water purifier service center in Bangalore offering fast RO repair, installation & AMC at your doorstep. Call our RO service center number +91 7090170092. Available 24x7." />
+    <meta name="keywords" content="water purifier service center, water purifier service center near me, water purifier service centre near me, ro service centre near me, ro service center number, RO service center, RO service center Bangalore" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://roservicesupport.co.in/" />
+    
+    <meta name="theme-color" content="#0A2B4E" />
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preload" as="image" href="/ro-banner.webp" type="image/webp" fetchpriority="high" />
+
+    <meta name="geo.region" content="IN-KA" />
+    <meta name="geo.placename" content="Bangalore" />
+    <meta name="geo.position" content="12.9716;77.5946" />
+    <meta name="ICBM" content="12.9716, 77.5946" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        html, body { width: 100%; overflow-x: hidden; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            color: #222222; line-height: 1.5; background: #f4f7fb; 
+        }
+        
+        .container { width: 100%; max-width: 100%; margin: 0 auto; }
+        @media (min-width: 768px) { .container { max-width: 720px; } }
+
+        .top-bar {
+            background: #0A2B4E; color: #ffffff;
+            padding: 6px 0; font-size: 0.75rem; font-weight: 500;
+            overflow: hidden; white-space: nowrap;
+            position: relative; z-index: 101;
+        }
+        .marquee { display: inline-block; padding-left: 100%; animation: scroll-left 12s linear infinite; }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        header { background: #0A2B4E; padding: 10px 0; position: sticky; top: 0; z-index: 100; }
+        .header-inner { 
+            display: flex; justify-content: space-between; 
+            align-items: center; padding: 0 16px;
+            max-width: 720px; margin: 0 auto;
+            position: relative;
+        }
+        .header-left { display: flex; align-items: center; gap: 10px; }
+        .menu-icon { 
+            color: #fff; font-size: 1.3rem; cursor: pointer; 
+            user-select: none; padding: 4px 6px; border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .menu-icon:hover { background: rgba(255,255,255,0.1); }
+        
+        /* ================= LOGO STYLE FOR CUSTOM IMAGE ================= */
+        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        
+        /* Yahan apni logo image ke liye style hai */
+        .logo-img {
+            width: 32px; /* Logo ki width adjust karein */
+            height: 32px; /* Logo ki height adjust karein */
+            object-fit: contain; /* Logo stretch nahi hoga */
+            border-radius: 4px;
+        }
+
+        .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-main { font-weight: 800; font-size: 1.1rem; color: #ffffff; letter-spacing: 0.02em; }
+        .logo-sub { font-size: 0.65rem; color: #94a3b8; font-weight: 500; letter-spacing: 0.5px; margin-top: 2px; }
+        /* ================================================================ */
+
+        .header-icons { display: flex; gap: 14px; color: #fff; font-size: 1.1rem; align-items: center; }
+        .header-icons span { 
+            cursor: pointer; user-select: none;
+            transition: transform 0.2s;
+            display: inline-flex; align-items: center;
+        }
+        .header-icons span:hover { transform: scale(1.15); }
+        .icon-wrapper { position: relative; display: inline-flex; }
+        .badge {
+            position: absolute; top: -5px; right: -7px;
+            background: #f97316; color: #fff;
+            font-size: 0.55rem; padding: 2px 4px;
+            border-radius: 50%; font-weight: 800;
+        }
+
+        .dropdown-menu {
+            display: none; position: absolute; top: 100%; left: 0;
+            background: #fff; min-width: 220px; border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            padding: 8px 0; z-index: 200; margin-top: 4px;
+            border: 1px solid #e5e7eb;
+        }
+        .dropdown-menu.show { display: block; }
+        .dropdown-menu a {
+            display: block; padding: 12px 20px; color: #0A2B4E;
+            text-decoration: none; font-size: 0.9rem; font-weight: 600;
+            transition: all 0.2s; border-left: 3px solid transparent;
+        }
+        .dropdown-menu a:hover {
+            background: #f4f7fb; border-left-color: #f97316; color: #f97316;
+        }
+
+        .hero {
+            position: relative; padding: 50px 20px; color: #fff; 
+            text-align: left; overflow: hidden; min-height: 200px;
+        }
+        .hero-img {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top; z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(10, 43, 78, 0.55), rgba(10, 43, 78, 0.15));
+            z-index: 2;
+        }
+        .hero-inner { position: relative; z-index: 3; max-width: 720px; margin: 0 auto; }
+        .hero h1 { 
+            font-size: 2rem; font-weight: 800; line-height: 1.2; 
+            margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .hero p { 
+            font-size: 1rem; opacity: 0.95; line-height: 1.5;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro-section { padding: 40px 24px; background: #fff; }
+        .intro-inner { max-width: 720px; margin: 0 auto; }
+        .intro-section h2 {
+            font-size: 1.4rem; font-weight: 800; color: #0A2B4E;
+            margin-bottom: 16px; line-height: 1.3; text-align: justify;
+        }
+        .intro-section p {
+            font-size: 0.95rem; color: #555;
+            line-height: 1.6; text-align: justify; 
+        }
+
+        .form-section { padding: 0 16px 40px; background: #f4f7fb; }
+        .form-box {
+            background: #fff; border-radius: 16px; padding: 24px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: -20px; position: relative; z-index: 10;
+            max-width: 720px; margin-left: auto; margin-right: auto;
+        }
+        .form-box h3 {
+            text-align: center; font-size: 1.15rem; font-weight: 800;
+            color: #0A2B4E; margin-bottom: 16px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; color: #333; }
+        .form-group label span { color: #f97316; }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 10px 16px; border: 1px solid #ccc;
+            border-radius: 30px; font-size: 0.95rem; font-family: inherit;
+            background: #fff; color: #111; outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group textarea { border-radius: 16px; resize: vertical; min-height: 70px; }
+        .form-group input:focus, .form-group textarea:focus { border-color: #0A2B4E; }
+
+        .submit-btn {
+            display: block; width: 100%; padding: 12px 20px;
+            border-radius: 30px; font-weight: 700; font-size: 1rem;
+            cursor: pointer; background: #f97316; color: #ffffff;
+            border: none; margin-top: 8px; transition: background 0.2s;
+        }
+        .submit-btn:hover { background: #ea580c; }
+
+        .services-section { background: #fff; padding: 48px 24px; border-top: 1px solid #e5e7eb; }
+        .services-inner { max-width: 720px; margin: 0 auto; }
+        .services-heading {
+            font-size: 1.4rem; font-weight: 800; color: #0A2B4E;
+            text-align: justify; margin-bottom: 16px; line-height: 1.3;
+        }
+        .services-intro {
+            font-size: 0.95rem; color: #555;
+            line-height: 1.7; text-align: justify; margin-bottom: 28px;
+        }
+        .service-block-title {
+            font-size: 1.05rem; font-weight: 800; color: #0A2B4E;
+            text-align: justify; margin-bottom: 8px;
+            margin-top: 24px; line-height: 1.3;
+        }
+        .service-block-text {
+            font-size: 0.92rem; color: #555;
+            line-height: 1.7; text-align: justify; margin-bottom: 4px;
+        }
+
+        .why-section { background: #f4f7fb; padding: 48px 24px; border-top: 1px solid #e5e7eb; }
+        .why-inner { max-width: 720px; margin: 0 auto; }
+        .why-heading {
+            font-size: 1.4rem; font-weight: 800; color: #0A2B4E;
+            text-align: justify; margin-bottom: 16px; line-height: 1.3;
+        }
+        .why-intro {
+            font-size: 0.95rem; color: #555;
+            line-height: 1.7; text-align: justify; margin-bottom: 28px;
+        }
+        .why-block-title {
+            font-size: 1.05rem; font-weight: 800; color: #0A2B4E;
+            text-align: justify; margin-bottom: 8px;
+            margin-top: 24px; line-height: 1.3;
+        }
+        .why-block-text {
+            font-size: 0.92rem; color: #555;
+            line-height: 1.7; text-align: justify; margin-bottom: 4px;
+        }
+
+        .faq-section { background: #fff; padding: 48px 24px; border-top: 1px solid #e5e7eb; }
+        .faq-inner { max-width: 720px; margin: 0 auto; }
+        .faq-heading {
+            font-size: 1.4rem; font-weight: 800; color: #0A2B4E;
+            text-align: justify; margin-bottom: 16px; line-height: 1.3;
+        }
+        .faq-intro {
+            font-size: 0.95rem; color: #555;
+            line-height: 1.7; text-align: justify; margin-bottom: 24px;
+        }
+        .faq-item {
+            background: #f9fafb; border: 1px solid #e5e7eb;
+            border-radius: 10px; padding: 16px 18px;
+            margin-bottom: 10px; transition: border-color 0.2s;
+        }
+        .faq-item:hover { border-color: #f97316; }
+        .faq-question {
+            font-size: 0.95rem; font-weight: 700; color: #0A2B4E;
+            text-align: justify; line-height: 1.4; cursor: pointer;
+            display: flex; justify-content: space-between;
+            align-items: flex-start; gap: 12px;
+        }
+        .faq-question::after {
+            content: "+"; color: #f97316; font-size: 1.3rem;
+            font-weight: 800; line-height: 1; flex-shrink: 0;
+        }
+        .faq-item.active .faq-question::after { content: "−"; }
+        .faq-answer {
+            display: none; font-size: 0.88rem; color: #555;
+            line-height: 1.7; text-align: justify;
+            margin-top: 10px; padding-top: 10px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .faq-item.active .faq-answer { display: block; }
+
+        @media (min-width: 768px) {
+            .hero { padding: 70px 40px; min-height: 300px; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { font-size: 1.1rem; }
+            .intro-section { padding: 50px 40px; }
+            .form-section { padding: 0 40px 50px; }
+            .services-section, .why-section, .faq-section { padding: 70px 40px; }
+            .services-heading, .why-heading, .faq-heading { font-size: 1.7rem; }
+            .service-block-title, .why-block-title { font-size: 1.15rem; }
+            .faq-question { font-size: 1rem; }
+        }
+
+        .side-ribbon {
+            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+            background: #f97316; color: #fff; padding: 20px 8px;
+            writing-mode: vertical-rl; text-orientation: mixed;
+            font-weight: 800; font-size: 0.85rem; letter-spacing: 1px;
+            border-top-left-radius: 8px; border-bottom-left-radius: 8px;
+            cursor: pointer; text-decoration: none;
+            z-index: 200; box-shadow: -2px 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .call-float {
+            position: fixed; bottom: 24px; left: 24px;
+            background: #f97316; width: 56px; height: 56px;
+            border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            color: #fff; font-size: 1.6rem; text-decoration: none;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.5);
+            z-index: 200; animation: pulse 2s infinite;
+        }
+        .call-float:hover { background: #ea580c; }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(249, 115, 22, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+        }
+
+        footer { 
+            background: #0A2B4E; color: #94a3b8;
+            padding: 40px 24px 24px; font-size: 0.88rem; 
+        }
+        .footer-inner { max-width: 720px; margin: 0 auto; }
+        .footer-grid {
+            display: grid; grid-template-columns: 1fr;
+            gap: 28px; margin-bottom: 28px;
+        }
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: 1.2fr 1fr 1.2fr; gap: 32px; }
+        }
+        .footer-col h4 {
+            color: #fff; font-size: 0.95rem; font-weight: 800;
+            margin-bottom: 14px; letter-spacing: 0.3px;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8; font-size: 0.85rem;
+            line-height: 1.7; text-decoration: none;
+            display: block; margin-bottom: 6px; text-align: justify;
+        }
+        .footer-col a:hover { color: #f97316; }
+        .footer-brand {
+            color: #fff; font-size: 1.15rem;
+            font-weight: 800; margin-bottom: 10px; display: block;
+        }
+        .footer-brand span { color: #f97316; }
+        .footer-tagline {
+            color: #94a3b8; font-size: 0.85rem;
+            line-height: 1.6; text-align: justify; margin-bottom: 12px;
+        }
+        .support-badge {
+            display: inline-block; background: rgba(249, 115, 22, 0.15);
+            color: #f97316; font-size: 0.75rem; font-weight: 700;
+            padding: 4px 10px; border-radius: 20px; margin-top: 4px;
+        }
+
+        .footer-disclaimer {
+            background: rgba(249, 115, 22, 0.08);
+            border-left: 3px solid #f97316;
+            padding: 14px 16px; border-radius: 6px;
+            font-size: 0.78rem; color: #94a3b8;
+            line-height: 1.7; text-align: justify; margin-bottom: 20px;
+        }
+        .footer-disclaimer strong { color: #f97316; font-weight: 800; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 16px; text-align: center;
+            color: #64748b; font-size: 0.78rem; margin-bottom: 12px;
+        }
+
+        .footer-legal-links {
+            text-align: center; padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-legal-links a {
+            color: #94a3b8; font-size: 0.78rem;
+            text-decoration: none; transition: color 0.2s;
+            display: inline; margin: 0;
+        }
+        .footer-legal-links a:hover { color: #f97316; }
+        .footer-legal-links .divider {
+            color: #475569; margin: 0 6px; font-size: 0.78rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="marquee">
+            <span>24x7 Customer Service Support in Bangalore. Get a certified technician at your doorstep within 60 minutes. Book your repair or maintenance service today!</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-inner">
+            <div class="header-left">
+                <div class="menu-icon" id="menuBtn">☰</div>
+                <a href="/" class="logo">
+                    <!-- YAHAN APNI LOGO IMAGE KA PATH DAALEIN -->
+                    <!-- Example: src="/logo.png" ya src="/images/logo.jpg" -->
+                    <img src="/logo.png" alt="RO Service Support Logo" class="logo-img" />
+                    
+                    <div class="logo-text-wrap">
+                        <span class="logo-main">RO Service Support</span>
+                        <span class="logo-sub">Customer Service Center</span>
+                    </div>
+                </a>
+            </div>
+            <div class="header-icons">
+                <span id="searchBtn" title="Search">🔍</span>
+                <span id="userBtn" title="Account">👤</span>
+                <span id="cartBtn" title="Cart" class="icon-wrapper">
+                    🛒
+                    <span class="badge">0</span>
+                </span>
+            </div>
+
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="/">🏠 Home</a>
+                <a href="/about">ℹ️ About Us</a>
+                <a href="#services">🔧 Our Services</a>
+                <a href="#why">⭐ Why Choose Us</a>
+                <a href="#faq">❓ FAQ</a>
+                <a href="#serviceForm">📝 Book a Service</a>
+                <a href={PHONE_LINK}>📞 Call Now</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <img src="/ro-banner.webp" alt="RO Service Center Bangalore - Water Purifier Repair" class="hero-img" fetchpriority="high" width="1200" height="600" />
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+            <h1>RO Service Request</h1>
+            <p>Fill the below service request form<br>or call us at {PHONE}</p>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <div class="intro-inner">
+            <h2>Doorstep RO Service & Support</h2>
+            <p>Having trouble with your water purifier? We are here to help. Fill out the service request form below for RO repair, installation, or maintenance. Our customer support team will contact you shortly to schedule a doorstep visit by a certified technician.</p>
+        </div>
+    </div>
+
+    <div class="form-section" id="serviceForm">
+        <div class="form-box">
+            <h3>Register Service Request</h3>
+            <form action="https://formsubmit.co/syedsmaula786@gmail.com" method="POST" id="serviceFormElement">
+                
+                <input type="hidden" name="_subject" value="New RO Service Request" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value="https://roservicesupport.co.in/thank-you" />
+                <input type="text" name="_honey" style="display:none" />
+
+                <input type="hidden" name="Booking ID" id="bookingIdField" value="" />
+
+                <div class="form-group">
+                    <label for="name">Name<span>*</span></label>
+                    <input type="text" id="name" name="Name" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number<span>*</span></label>
+                    <input type="tel" id="mobile" name="Mobile" pattern="[0-9]{10}" title="Please enter 10-digit mobile number" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="pincode">Pin Code<span>*</span></label>
+                    <input type="text" id="pincode" name="Pin Code" pattern="[0-9]{6}" title="Please enter 6-digit pin code" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address<span>*</span></label>
+                    <textarea id="address" name="Address" placeholder="Enter your full address..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="services-section" id="services">
+        <div class="services-inner">
+            <h2 class="services-heading">Our Water Purifier Service Center Services</h2>
+            
+            <p class="services-intro">
+                Looking for a reliable water purifier service center near you? We offer complete doorstep support for all types of RO systems. Whether you need urgent repair, fresh installation, or regular maintenance, our certified technicians are always ready to help. Call our RO service center number or fill the form above to book a visit today.
+            </p>
+
+            <h3 class="service-block-title">RO Repair & Diagnostics</h3>
+            <p class="service-block-text">
+                Facing low water flow, leakage, or motor noise? Our water purifier service center offers quick diagnosis and repair with genuine parts. Every repair is backed by a 30-day service warranty, so you can be sure your purifier keeps running smoothly.
+            </p>
+
+            <h3 class="service-block-title">New RO Installation</h3>
+            <p class="service-block-text">
+                Searching for a water purifier service centre near me for a new installation? Our team handles complete setup, demo, and post-installation guidance right at your doorstep. We make sure you understand how to use and maintain your new RO system from day one.
+            </p>
+
+            <h3 class="service-block-title">AMC & Maintenance Plans</h3>
+            <p class="service-block-text">
+                Our annual maintenance plans include regular servicing, filter cleaning, and priority support. This makes us the best RO service centre near you for long-term care, saving you time and money on unexpected repairs throughout the year.
+            </p>
+
+            <h3 class="service-block-title">Filter & Membrane Change</h3>
+            <p class="service-block-text">
+                We use only 100% genuine filters and membranes. Call our RO service center number to book a quick replacement and enjoy fresh, safe drinking water every day. Old or clogged filters are removed and disposed of responsibly.
+            </p>
+
+            <h3 class="service-block-title">Deep Cleaning Service</h3>
+            <p class="service-block-text">
+                Deep cleaning removes bacteria and improves water quality. Our RO service center ensures your purifier stays hygienic, efficient, and safe for your family. We recommend this service at least once every six months for best results.
+            </p>
+
+            <h3 class="service-block-title">Commercial RO Service</h3>
+            <p class="service-block-text">
+                For offices, hotels, restaurants, and schools, we provide bulk RO service center support for large-scale water purifiers. Our team ensures minimal downtime and maximum efficiency, so your business never faces a water shortage.
+            </p>
+        </div>
+    </section>
+
+    <section class="why-section" id="why">
+        <div class="why-inner">
+            <h2 class="why-heading">Why Choose Our Water Purifier Service Center?</h2>
+            <p class="why-intro">
+                Choosing the right water purifier service center matters for your family's health and safety. We stand out because we focus on fast response, honest pricing, and long-term reliability. Here is what makes us the preferred RO service center for thousands of households in Bangalore.
+            </p>
+
+            <h3 class="why-block-title">Certified & Verified Technicians</h3>
+            <p class="why-block-text">
+                Every technician who visits your home is trained, background-verified, and equipped with the right tools. We do not send random mechanics — you get a professional who knows water purifiers inside out and treats your home with respect.
+            </p>
+
+            <h3 class="why-block-title">Fast 60-Minute Doorstep Response</h3>
+            <p class="why-block-text">
+                We understand that a broken water purifier cannot wait. That is why we promise a certified technician at your doorstep within 60 minutes of booking. Our quick response time has made us the most trusted RO service center near you.
+            </p>
+
+            <h3 class="why-block-title">Transparent Pricing Starting at ₹299</h3>
+            <p class="why-block-text">
+                No hidden charges, no surprise bills. Our standard service visit starts at just ₹299 and includes a full checkup. If any spare part is needed, we inform you of the price upfront and only proceed after your approval.
+            </p>
+
+            <h3 class="why-block-title">100% Genuine Spare Parts</h3>
+            <p class="why-block-text">
+                We use only original filters, membranes, and cartridges from trusted manufacturers. Cheap duplicate parts may save money today but harm your purifier and your health. We never compromise on quality for a quick profit.
+            </p>
+
+            <h3 class="why-block-title">30-Day Service Warranty</h3>
+            <p class="why-block-text">
+                Every repair we perform is backed by a 30-day service warranty. If the same problem returns within this period, we will fix it free of charge. This is our way of standing behind our work and giving you peace of mind.
+            </p>
+
+            <h3 class="why-block-title">24x7 Availability & Easy Payments</h3>
+            <p class="why-block-text">
+                We are available 24x7, every day of the week including weekends and holidays. Payment is simple too — you can pay via UPI, cash, or card. Whichever is convenient for you. Our goal is to make RO service completely hassle-free.
+            </p>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="faq-inner">
+            <h2 class="faq-heading">Frequently Asked Questions</h2>
+            <p class="faq-intro">
+                Have questions about our water purifier service center in Bangalore? Here are answers to some of the most common queries from our customers. If you need more information, feel free to call us directly.
+            </p>
+
+            {faqs.map((faq, index) => (
+                <div class="faq-item" data-index={index}>
+                    <div class="faq-question">{faq.q}</div>
+                    <div class="faq-answer">{faq.a}</div>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <a href={PHONE_LINK} class="side-ribbon">BOOK A SERVICE</a>
+    <a href={PHONE_LINK} class="call-float" aria-label="Call Now">📞</a>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <span class="footer-brand">RO <span>Service Support</span></span>
+                    <p class="footer-tagline">Professional water purifier service center in Bangalore. We provide doorstep RO repair, installation, AMC, and maintenance for all types of water purifiers.</p>
+                    <span class="support-badge">● 24x7 Customer Service Support</span>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <a href={PHONE_LINK}>📞 {PHONE}</a>
+                    <a href={`mailto:${EMAIL}`}>✉️ {EMAIL}</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Service Area</h4>
+                    <p>Bangalore, Karnataka</p>
+                    <p style="margin-top: 8px;">Available 24x7 across all major areas of Bangalore and nearby localities.</p>
+                </div>
+            </div>
+
+            <div class="footer-disclaimer">
+                <strong>Disclaimer:</strong> RO Service Support is an independent water purifier service provider. We are not affiliated with, authorized by, or associated with any specific water purifier brand. All brand names, trademarks, and logos mentioned on this website belong to their respective owners and are used for identification purposes only.
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 RO Service Support. All rights reserved.</p>
+            </div>
+
+            <div class="footer-legal-links">
+                <a href="/about">About Us</a>
+                <span class="divider">·</span>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <span class="divider">·</span>
+                <a href="/terms">Terms & Conditions</a>
+                <span class="divider">·</span>
+                <a href="/disclaimer">Disclaimer</a>
+                <span class="divider">·</span>
+                <a href="/cookie-policy">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DEVICE TRACKING (Data Sent Before Block) =====
+        (function() {
+            // ⭐ APNE SAARE FINGERPRINTS YAHAN DAALO (whitelist)
+            var MY_FINGERPRINTS = ['fp_i70rcm', 'fp_etkxam', 'fp_tovynh', 'fp_eewy8k', 'fp_epmihv', 'fp_4b117r', 'fp_m26yps', 'fp_t55341', 'fp_l8xc10', 'fp_lybcwx', 'fp_ly01lt'];
+
+            function getFingerprint() {
+                try {
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+                    ctx.textBaseline = 'top';
+                    ctx.font = '14px Arial';
+                    ctx.fillText('RO Service Support', 2, 2);
+                    var canvasData = canvas.toDataURL();
+
+                    var gl = document.createElement('canvas').getContext('webgl');
+                    var webglInfo = '';
+                    if (gl) {
+                        var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+                        if (dbg) webglInfo = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '';
+                    }
+
+                    var fpData = [
+                        navigator.userAgent,
+                        navigator.language,
+                        screen.width + 'x' + screen.height,
+                        screen.colorDepth,
+                        new Date().getTimezoneOffset(),
+                        navigator.hardwareConcurrency || 0,
+                        canvasData,
+                        webglInfo
+                    ].join('|');
+
+                    var hash = 0;
+                    for (var i = 0; i < fpData.length; i++) {
+                        hash = ((hash << 5) - hash) + fpData.charCodeAt(i);
+                        hash = hash & hash;
+                    }
+                    return 'fp_' + Math.abs(hash).toString(36);
+                } catch(e) {
+                    return 'fp_' + Math.random().toString(36).substring(2, 12);
+                }
+            }
+
+            var fp = getFingerprint();
+            document.cookie = 'fp=' + fp + '; max-age=' + (30 * 24 * 60 * 60) + '; path=/';
+
+            // Whitelist check
+            if (MY_FINGERPRINTS.indexOf(fp) !== -1) return;
+
+            var params = new URLSearchParams(window.location.search);
+            var gclid = params.get('gclid') || params.get('gbraid') || params.get('wbraid');
+            if (!gclid) return;
+
+            var key = 'wm_clicks_' + fp;
+            var clicks = parseInt(localStorage.getItem(key) || '0') + 1;
+            localStorage.setItem(key, clicks);
+
+            // ⭐ PEHLE DATA BHEJO
+            fetch('/api/track-device', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fp: fp,
+                    clicks: clicks,
+                    gclid: gclid,
+                    url: window.location.href,
+                    ua: navigator.userAgent
+                })
+            }).catch(function() {});
+
+            // ⭐ PHIR BLOCK CHECK KARO
+            if (clicks >= 3) {
+                localStorage.setItem('wm_blocked_' + fp, 'true');
+                setTimeout(function() {
+                    document.documentElement.innerHTML = 
+                        '<body style="font-family:-apple-system,sans-serif;text-align:center;padding:100px 20px;background:#f4f7fb;">' +
+                        '<h1 style="color:#0A2B4E;font-size:1.8rem;font-weight:800;">Access Restricted</h1>' +
+                        '<p style="color:#555;margin-top:16px;font-size:1rem;">Your access has been blocked due to unusual activity.</p>' +
+                        '</body>';
+                }, 500);
+            }
+        })();
+
+        // ===== PAGE FUNCTIONALITY + CONVERSION TRACKING =====
+        function generateBookingId() {
+            const now = new Date();
+            const year = now.getFullYear().toString().slice(-2);
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const random = Math.floor(1000 + Math.random() * 9000);
+            return `RO-${year}${month}${day}-${random}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingId = generateBookingId();
+            const bookingField = document.getElementById('bookingIdField');
+            if (bookingField) {
+                bookingField.value = bookingId;
+            }
+            try { sessionStorage.setItem('bookingId', bookingId); } catch(e) {}
+
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(function(item) {
+                const question = item.querySelector('.faq-question');
+                if (question) {
+                    question.addEventListener('click', function() { item.classList.toggle('active'); });
+                }
+            });
+
+            function scrollToForm() {
+                const formSection = document.getElementById('serviceForm');
+                if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setTimeout(function() { 
+                        const nameField = document.getElementById('name');
+                        if (nameField) nameField.focus(); 
+                    }, 600);
+                }
+            }
+
+            const searchBtn = document.getElementById('searchBtn');
+            const userBtn = document.getElementById('userBtn');
+            const cartBtn = document.getElementById('cartBtn');
+            if (searchBtn) searchBtn.addEventListener('click', scrollToForm);
+            if (userBtn) userBtn.addEventListener('click', scrollToForm);
+            if (cartBtn) cartBtn.addEventListener('click', scrollToForm);
+
+            const menuBtn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('dropdownMenu');
+
+            if (menuBtn && dropdown) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+
+                dropdown.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() { dropdown.classList.remove('show'); });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            // ===== CONVERSION BLOCK =====
+            const isBlocked = function() {
+                var fpMatch = document.cookie.match(/fp=([^;]+)/);
+                var fp = fpMatch ? fpMatch[1] : null;
+                if (!fp) return false;
+                return localStorage.getItem('wm_blocked_' + fp) === 'true';
+            };
+
+            // Form Submit Block
+            const form = document.getElementById('serviceFormElement');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', { 'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9' });
+                    }
+                });
+            }
+
+            // Call Button Block
+            document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', { 'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9' });
+                    }
+                });
+            });
+
+            // WhatsApp Block
+            document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
+                });
+            });
+
+            // Email Block
+            document.querySelectorAll('a[href^="mailto:"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (isBlocked()) {
+                        e.preventDefault();
+                        alert('Access Restricted');
+                        return false;
+                    }
+                });
+            });
+        });
+
+        // Load Google Tag (Lazy)
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var gtagScript = document.createElement('script');
+                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16577170929';
+                gtagScript.async = true;
+                document.head.appendChild(gtagScript);
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>
