@@ -1,17 +1,17 @@
 ---
-// Full Code - Final with Whitelist
-const PHONE = "+91 90083 15606";
-const PHONE_LINK = "tel:+919008315606";
+// Full Code - With Custom Logo Image Option
+const PHONE = "+91 7090170092";
+const PHONE_LINK = "tel:+917090170092";
 const EMAIL = "info@roservicesupport.co.in";
 
 const faqs = [
   { q: "What services does your water purifier service center provide?", a: "Our water purifier service center provides complete RO repair, new installation, annual maintenance (AMC), filter and membrane replacement, deep cleaning, and commercial RO service for offices, hotels, and restaurants." },
-  { q: "How do I find a water purifier service center near me?", a: "Simply fill out the service request form on this page or call us at +91 90083 15606. Our customer support team will assign a certified technician near your location within 60 minutes." },
-  { q: "What is the RO service center number to book a technician?", a: "You can call our RO service center number +91 90083 15606 to book a technician. We are available 24x7 for doorstep service." },
+  { q: "How do I find a water purifier service center near me?", a: "Simply fill out the service request form on this page or call us at +91 7090170092. Our customer support team will assign a certified technician near your location within 60 minutes." },
+  { q: "What is the RO service center number to book a technician?", a: "You can call our RO service center number +91 7090170092 to book a technician. We are available 24x7 for doorstep service." },
   { q: "Do you provide doorstep service?", a: "Yes, we provide 100% doorstep service. Our certified technicians arrive at your home, diagnose the issue, and complete the repair or installation on the spot with genuine spare parts." },
   { q: "How much does RO repair cost?", a: "Our standard service visit starts at just ₹299. This includes a full checkup and basic cleaning. Any spare parts or replacements are charged separately after informing you in advance." },
   { q: "Do you offer a warranty on repairs?", a: "Yes, every repair we perform comes with a 30-day service warranty. If the same issue reoccurs within this period, we will fix it free of charge." },
-  { q: "Which areas do you serve?", a: "We serve all major areas across Bangalore and nearby localities. To confirm service availability in your specific area, please call us at +91 90083 15606 or submit the form above." }
+  { q: "Which areas do you serve?", a: "We serve all major areas across Bangalore and nearby localities. To confirm service availability in your specific area, please call us at +91 7090170092 or submit the form above." }
 ];
 
 const faqSchema = {
@@ -31,7 +31,7 @@ const localBusinessSchema = {
   "description": "Professional water purifier service center in Bangalore offering RO repair, installation, AMC, and maintenance at your doorstep. Available 24x7.",
   "image": "https://roservicesupport.co.in/logo.png",
   "url": "https://roservicesupport.co.in/",
-  "telephone": "+919008315606",
+  "telephone": "+917090170092",
   "email": "info@roservicesupport.co.in",
   "priceRange": "₹299 - ₹2,499",
   "address": {
@@ -67,7 +67,7 @@ const localBusinessSchema = {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RO Service Center Bangalore | Water Purifier Service Center Near Me</title>
-    <meta name="description" content="Trusted water purifier service center in Bangalore offering fast RO repair, installation & AMC at your doorstep. Call our RO service center number +91 90083 15606. Available 24x7." />
+    <meta name="description" content="Trusted water purifier service center in Bangalore offering fast RO repair, installation & AMC at your doorstep. Call our RO service center number +91 7090170092. Available 24x7." />
     <meta name="keywords" content="water purifier service center, water purifier service center near me, water purifier service centre near me, ro service centre near me, ro service center number, RO service center, RO service center Bangalore" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://roservicesupport.co.in/" />
@@ -123,7 +123,23 @@ const localBusinessSchema = {
             transition: background 0.2s;
         }
         .menu-icon:hover { background: rgba(255,255,255,0.1); }
-        .logo { font-weight: 800; font-size: 1.1rem; color: #ffffff; text-decoration: none; letter-spacing: 0.02em; }
+        
+        /* ================= LOGO STYLE FOR CUSTOM IMAGE ================= */
+        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        
+        /* Yahan apni logo image ke liye style hai */
+        .logo-img {
+            width: 32px; /* Logo ki width adjust karein */
+            height: 32px; /* Logo ki height adjust karein */
+            object-fit: contain; /* Logo stretch nahi hoga */
+            border-radius: 4px;
+        }
+
+        .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-main { font-weight: 800; font-size: 1.1rem; color: #ffffff; letter-spacing: 0.02em; }
+        .logo-sub { font-size: 0.65rem; color: #94a3b8; font-weight: 500; letter-spacing: 0.5px; margin-top: 2px; }
+        /* ================================================================ */
+
         .header-icons { display: flex; gap: 14px; color: #fff; font-size: 1.1rem; align-items: center; }
         .header-icons span { 
             cursor: pointer; user-select: none;
@@ -417,7 +433,16 @@ const localBusinessSchema = {
         <div class="header-inner">
             <div class="header-left">
                 <div class="menu-icon" id="menuBtn">☰</div>
-                <a href="/" class="logo">RO Service Support</a>
+                <a href="/" class="logo">
+                    <!-- YAHAN APNI LOGO IMAGE KA PATH DAALEIN -->
+                    <!-- Example: src="/logo.png" ya src="/images/logo.jpg" -->
+                    <img src="/logo.png" alt="RO Service Support Logo" class="logo-img" />
+                    
+                    <div class="logo-text-wrap">
+                        <span class="logo-main">RO Service Support</span>
+                        <span class="logo-sub">Customer Service Center</span>
+                    </div>
+                </a>
             </div>
             <div class="header-icons">
                 <span id="searchBtn" title="Search">🔍</span>
